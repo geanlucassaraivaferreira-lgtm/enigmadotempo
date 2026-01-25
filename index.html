@@ -2,108 +2,136 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>⏳ O Enigma do Tempo Perdido</title>
+<title>O Enigma do Tempo</title>
+
 <style>
 body {
-  font-family: 'Georgia', serif;
-  background: radial-gradient(circle, #020617, #000);
-  color: #e5e7eb;
+  background: radial-gradient(circle at top, #0b1d26, #000);
+  color: #f5f5f5;
+  font-family: "Georgia", serif;
   text-align: center;
-  padding: 20px;
+  padding: 30px;
 }
+
 h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
   letter-spacing: 2px;
 }
-.timer {
-  margin: 20px 0;
-  font-size: 1.2em;
+
+.subtitle {
+  opacity: 0.8;
+  margin-bottom: 30px;
 }
-.enigma {
+
+.cronica {
   background: rgba(255,255,255,0.05);
-  margin: 15px auto;
-  padding: 15px;
-  max-width: 420px;
-  border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.1);
-  opacity: 0.3;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 700px;
+  animation: fade 1.5s ease;
 }
-.ativo {
-  opacity: 1;
-  background: rgba(255,255,255,0.12);
+
+.cronica h2 {
+  color: #ffd479;
 }
-footer {
-  margin-top: 40px;
-  font-size: 0.9em;
-  opacity: 0.6;
+
+.pista {
+  margin-top: 15px;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+video {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
 
 <body>
 
-<h1>⏳ O Enigma do Tempo Perdido</h1>
-<p>Somente quem presta atenção aos detalhes consegue avançar.</p>
+<h1>📜 O Enigma do Tempo</h1>
+<p class="subtitle">Uma jornada onde o tempo escolhe com quem permanecer</p>
 
-<div class="timer" id="contador"></div>
-
-<div id="enigmas"></div>
-
-<footer>
-Guardião do Tempo
-</footer>
+<div id="cronicas"></div>
 
 <script>
-const inicio = new Date("2026-02-02T00:00:00");
+// 🔐 DATA DE INÍCIO DOS ENIGMAS
+const inicio = new Date("2026-02-02");
 const hoje = new Date();
-const diaAtual = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24)) + 1;
+const diasLiberados = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24)) + 1;
 
-const enigmas = [
-"O tempo só se perde quando não é compartilhado.",
-"Repare em quem faz o dia parecer mais curto.",
-"Algumas presenças silenciam o mundo.",
-"O coração reconhece antes da razão.",
-"Nem todo cuidado é dito em palavras.",
-"Quando alguém importa, o tempo muda.",
-"Há conexões que não pedem explicação.",
-"O mistério não é o que acontece, é com quem.",
-"Algumas escolhas começam antes da decisão.",
-"O tempo gosta de quem observa.",
-"Presença também é carinho.",
-"Nem todo sentimento faz barulho.",
-"Há pessoas que viram referência.",
-"Quando é real, sustenta.",
-"O tempo protege o verdadeiro.",
-"Algumas histórias pedem continuidade.",
-"Certezas não precisam de provas.",
-"O mistério está prestes a acabar.",
-"O tempo foi construído com você."
-];
-
-const container = document.getElementById("enigmas");
-
-enigmas.forEach((texto, index) => {
-  const div = document.createElement("div");
-  if (index + 1 <= diaAtual) {
-    div.className = "enigma ativo";
-    div.innerText = "Pista " + (index + 1) + ": " + texto;
-  } else {
-    div.className = "enigma";
-    div.innerText = "🔒 Enigma bloqueado";
-  }
-  container.appendChild(div);
-});
-
-function atualizarContador() {
-  const agora = new Date();
-  const diff = inicio - agora;
-  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-  document.getElementById("contador").innerText =
-    dias >= 0 ? `Faltam ${dias} dias para o início do jogo` : "O jogo começou";
-}
-
-atualizarContador();
-setInterval(atualizarContador, 60000);
-</script>
-
-</body>
-</html>
+const cronicas = [
+{
+titulo:"Crônica I — O Primeiro Sinal",
+texto:"Na alvorada deste dia, o tempo hesitou. Nada se quebrou, mas algo antigo despertou.",
+pista:"📜 O tempo só se perde quando não é compartilhado."
+},
+{
+titulo:"Crônica II — O Chamado",
+texto:"O Guardião compreendeu que nenhuma jornada é feita sozinho.",
+pista:"📜 Repare em quem faz os dias parecerem mais curtos."
+},
+{
+titulo:"Crônica III — A Presença",
+texto:"Algumas presenças não erguem a voz. Ainda assim, mudam o mundo.",
+pista:"📜 Algumas presenças silenciam tudo."
+},
+{
+titulo:"Crônica IV — O Reconhecimento",
+texto:"Antes da mente entender, o coração já sabia.",
+pista:"📜 O coração reconhece antes da razão."
+},
+{
+titulo:"Crônica V — O Cuidado",
+texto:"Nem todo gesto deixa marcas visíveis. Alguns sustentam dias inteiros.",
+pista:"📜 Nem todo cuidado é dito."
+},
+{
+titulo:"Crônica VI — A Mudança",
+texto:"Quando alguém importa, o tempo não corre — acompanha.",
+pista:"📜 O tempo muda quando o amor chega."
+},
+{
+titulo:"Crônica VII — A Conexão",
+texto:"Há laços que não pedem explicação.",
+pista:"📜 Algumas conexões simplesmente existem."
+},
+{
+titulo:"Crônica VIII — O Mistério",
+texto:"O enigma não estava nos fatos, mas em com quem eles eram vividos.",
+pista:"📜 O mistério é o 'com quem'."
+},
+{
+titulo:"Crônica IX — A Escolha",
+texto:"Algumas decisões começam muito antes de serem ditas.",
+pista:"📜 O coração decide primeiro."
+},
+{
+titulo:"Crônica X — A Atenção",
+texto:"O tempo favorece quem observa com cuidado.",
+pista:"📜 Atenção também é amor."
+},
+{
+titulo:"Crônica XI — A Presença Verdadeira",
+texto:"Estar ali, mesmo em silêncio, também é uma forma de amar.",
+pista:"📜 Presença é abrigo."
+},
+{
+titulo:"Crônica XII — O Silêncio",
+texto:"Nem todo sentimento chega fazendo barulho.",
+pista:"📜 Alguns sentimentos chegam ficando."
+},
+{
+titulo:"Crônica XIII — A Referência",
+texto:"Sem perceber, certas pessoas viram lar.",
+pista:"📜 Alg
