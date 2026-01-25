@@ -2,35 +2,36 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>O Enigma do Tempo</title>
+<title>O Guardião do Tempo</title>
 
 <style>
 body {
   background: radial-gradient(circle at top, #0b1d26, #000);
   color: #f5f5f5;
-  font-family: Georgia, serif;
+  font-family: "Georgia", serif;
   text-align: center;
   padding: 40px;
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 2.6em;
   letter-spacing: 2px;
 }
 
 .subtitle {
   opacity: 0.8;
   margin-bottom: 30px;
+  font-style: italic;
 }
 
 .capitulo {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 14px;
-  padding: 20px;
-  margin: 25px auto;
-  max-width: 650px;
-  animation: fade 1.2s ease;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 22px;
+  margin: 28px auto;
+  max-width: 680px;
+  animation: unlock 1.4s ease;
 }
 
 .capitulo h2 {
@@ -38,172 +39,75 @@ h1 {
 }
 
 .enigma {
-  margin-top: 15px;
+  margin-top: 16px;
   font-style: italic;
   opacity: 0.9;
 }
 
-video {
-  width: 100%;
-  border-radius: 12px;
-  margin-top: 20px;
+.bloqueado {
+  opacity: 0.5;
+  font-style: italic;
+  margin-top: 40px;
 }
 
-@keyframes fade {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes unlock {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+video {
+  width: 100%;
+  border-radius: 14px;
+  margin-top: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>📜 O Enigma do Tempo</h1>
-<p class="subtitle">Uma jornada onde o tempo escolhe com quem permanecer</p>
+<h1>📜 O Guardião do Tempo</h1>
+<p class="subtitle">Uma história onde o tempo só avança quando o amor permite</p>
+
+<!-- 🔊 SOM AMBIENTE -->
+<audio autoplay loop volume="0.3">
+  <source src="ambiente.mp3" type="audio/mpeg">
+</audio>
 
 <div id="capitulos"></div>
 
 <script>
-// 🔒 DATA DE INÍCIO DOS CAPÍTULOS
-// ⚠️ MUDE APENAS ESTA DATA SE PRECISAR
+// 🔒 DATA DE INÍCIO
 const dataInicio = new Date("2026-02-01T00:00:00");
-
-// Data de hoje
 const hoje = new Date();
 
-// Calcula quantos capítulos liberar
 let diasLiberados = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24)) + 1;
 if (diasLiberados < 0) diasLiberados = 0;
 if (diasLiberados > 20) diasLiberados = 20;
 
-// 📜 CAPÍTULOS
+// 📖 CONTOS
 const capitulos = [
-{
-t:"Capítulo I — O Primeiro Sinal",
-tx:"O tempo hesitou hoje. Nada parou… mas algo mudou.",
-e:"📌 Enigma: O que muda o tempo sem tocar nele?"
-},
-{
-t:"Capítulo II — O Chamado",
-tx:"Toda jornada exige alguém que enxergue além.",
-e:"📌 Enigma: Quem caminha ao seu lado mesmo sem ser chamado?"
-},
-{
-t:"Capítulo III — A Presença",
-tx:"Algumas pessoas chegam ficando.",
-e:"📌 Enigma: O que torna o silêncio confortável?"
-},
-{
-t:"Capítulo IV — O Reconhecimento",
-tx:"Antes da razão entender, o coração já sabia.",
-e:"📌 Enigma: Quem o coração reconhece sem explicação?"
-},
-{
-t:"Capítulo V — O Cuidado",
-tx:"Pequenos gestos sustentam grandes dias.",
-e:"📌 Enigma: O que mantém algo vivo nos dias comuns?"
-},
-{
-t:"Capítulo VI — A Mudança",
-tx:"O tempo não corre quando encontra sentido.",
-e:"📌 Enigma: O que faz o tempo desacelerar?"
-},
-{
-t:"Capítulo VII — A Conexão",
-tx:"Há laços que apenas existem.",
-e:"📌 Enigma: O que conecta sem amarrar?"
-},
-{
-t:"Capítulo VIII — O Mistério",
-tx:"O enigma nunca foi o caminho, mas com quem ele é vivido.",
-e:"📌 Enigma: O que transforma a jornada?"
-},
-{
-t:"Capítulo IX — A Escolha",
-tx:"Algumas decisões começam antes de serem ditas.",
-e:"📌 Enigma: Quando uma escolha começa?"
-},
-{
-t:"Capítulo X — A Atenção",
-tx:"O tempo favorece quem presta atenção.",
-e:"📌 Enigma: O que faz alguém se sentir visto?"
-},
-{
-t:"Capítulo XI — A Presença Verdadeira",
-tx:"Estar ali também é amar.",
-e:"📌 Enigma: O que consola sem palavras?"
-},
-{
-t:"Capítulo XII — O Silêncio",
-tx:"Alguns sentimentos apenas permanecem.",
-e:"📌 Enigma: O que fica quando o barulho vai embora?"
-},
-{
-t:"Capítulo XIII — O Lar",
-tx:"Certas pessoas viram abrigo.",
-e:"📌 Enigma: Onde o coração descansa?"
-},
-{
-t:"Capítulo XIV — O Sustento",
-tx: "O que é verdadeiro sustenta.",
-e:"📌 Enigma: O que não cansa com o tempo?"
-},
-{
-t:"Capítulo XV — A Proteção",
-tx:"O tempo protege o que merece continuar.",
-e:"📌 Enigma: O que vale ser guardado?"
-},
-{
-t:"Capítulo XVI — A Continuidade",
-tx:"Algumas histórias pedem futuro.",
-e:"📌 Enigma: O que merece ser vivido amanhã?"
-},
-{
-t:"Capítulo XVII — A Certeza",
-tx:"Existem certezas silenciosas.",
-e:"📌 Enigma: O que você sente sem explicar?"
-},
-{
-t:"Capítulo XVIII — A Aproximação",
-tx:"O mistério começa a se revelar.",
-e:"📌 Enigma: O que está prestes a acontecer?"
-},
-{
-t:"Capítulo XIX — O Limite do Tempo",
-tx:"O tempo agora espera.",
-e:"📌 Enigma: O que o tempo aguarda?"
-},
-{
-t:"Capítulo XX — A Joia do Tempo",
-tx:"A jornada chegou ao fim. O tempo encontrou onde ficar.",
-e:`
-<p style="font-style:italic;">
-“O tempo esteve em risco.<br><br>
-Não para detê-lo…<br>
-mas para escolher com quem ele deve continuar.”
-</p>
-
-<!-- 🎥 VÍDEO FINAL -->
-<!-- Quando chegar o dia 20, coloque o arquivo final.mp4 no GitHub -->
-<video controls>
-  <source src="final.mp4" type="video/mp4">
-</video>
-`
-}
-];
-
-const area = document.getElementById("capitulos");
-
-for (let i = 0; i < diasLiberados; i++) {
-  area.innerHTML += `
-    <div class="capitulo">
-      <h2>${capitulos[i].t}</h2>
-      <p>${capitulos[i].tx}</p>
-      <div class="enigma">${capitulos[i].e}</div>
-    </div>
-  `;
-}
-</script>
-
-</body>
-</html>
+{t:"Capítulo I — O Sussurro",tx:"O tempo sussurrou um nome que ainda não havia sido dito.",e:"📌 Enigma: O que começa antes do primeiro toque?"},
+{t:"Capítulo II — A Vigília",tx:"O Guardião observava, esperando alguém que não sabia esperar.",e:"📌 Enigma: Quem vigia sem dormir?"},
+{t:"Capítulo III — O Encontro",tx:"Alguns encontros não fazem barulho, mas mudam tudo.",e:"📌 Enigma: O que reconhecemos sem conhecer?"},
+{t:"Capítulo IV — A Permanência",tx:"Ela ficou. E isso foi suficiente.",e:"📌 Enigma: O que transforma um momento em lar?"},
+{t:"Capítulo V — O Cuidado",tx:"Cuidar foi o primeiro feitiço aprendido.",e:"📌 Enigma: O que protege sem prender?"},
+{t:"Capítulo VI — A Escolha",tx:"O tempo hesita quando alguém escolhe ficar.",e:"📌 Enigma: Quando uma escolha começa?"},
+{t:"Capítulo VII — O Silêncio Bom",tx:"Entre eles, o silêncio nunca foi vazio.",e:"📌 Enigma: O que só existe quando há confiança?"},
+{t:"Capítulo VIII — A Promessa Invisível",tx:"Nada foi dito, mas tudo foi prometido.",e:"📌 Enigma: O que vale mais que palavras?"},
+{t:"Capítulo IX — O Abrigo",tx:"O mundo podia ruir. Eles tinham um ao outro.",e:"📌 Enigma: Onde o coração descansa?"},
+{t:"Capítulo X — A Espera",tx:"Esperar deixou de ser dor.",e:"📌 Enigma: O que torna a espera leve?"},
+{t:"Capítulo XI — O Vínculo",tx:"O tempo tentou separar. Falhou.",e:"📌 Enigma: O que não se rompe?"},
+{t:"Capítulo XII — A Luz",tx:"Mesmo nos dias escuros, havia luz.",e:"📌 Enigma: O que ilumina sem queimar?"},
+{t:"Capítulo XIII — O Juramento",tx:"Alguns juramentos não precisam ser feitos.",e:"📌 Enigma: O que é eterno sem ser dito?"},
+{t:"Capítulo XIV — A Travessia",tx:"Eles atravessaram dúvidas juntos.",e:"📌 Enigma: O que vale enfrentar dragões?"},
+{t:"Capítulo XV — A Proteção",tx:"O Guardião protege aquilo que ama.",e:"📌 Enigma: O que merece ser guardado?"},
+{t:"Capítulo XVI — O Futuro",tx:"O amanhã deixou de assustar.",e:"📌 Enigma: O que faz o futuro desejar chegar?"},
+{t:"Capítulo XVII — A Certeza",tx:"O coração não hesitou.",e:"📌 Enigma: O que se sente sem prova?"},
+{t:"Capítulo XVIII — A Aproximação",tx:"O tempo começou a revelar seu segredo.",e:"📌 Enigma: O que está prestes a acontecer?"},
+{t:"Capítulo XIX — O Último Portal",tx:"O Guardião sabia: era agora.",e:"📌 Enigma: O que o tempo aguarda?"},
