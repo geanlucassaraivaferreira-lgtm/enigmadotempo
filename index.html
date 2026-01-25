@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>⏳ O Enigma do Tempo Perdido</title>
+<style>
+body {
+  font-family: 'Georgia', serif;
+  background: radial-gradient(circle, #020617, #000);
+  color: #e5e7eb;
+  text-align: center;
+  padding: 20px;
+}
+h1 {
+  letter-spacing: 2px;
+}
+.timer {
+  margin: 20px 0;
+  font-size: 1.2em;
+}
+.enigma {
+  background: rgba(255,255,255,0.05);
+  margin: 15px auto;
+  padding: 15px;
+  max-width: 420px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  opacity: 0.3;
+}
+.ativo {
+  opacity: 1;
+  background: rgba(255,255,255,0.12);
+}
+footer {
+  margin-top: 40px;
+  font-size: 0.9em;
+  opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<h1>⏳ O Enigma do Tempo Perdido</h1>
+<p>Somente quem presta atenção aos detalhes consegue avançar.</p>
+
+<div class="timer" id="contador"></div>
+
+<div id="enigmas"></div>
+
+<footer>
+Guardião do Tempo
+</footer>
+
+<script>
+const inicio = new Date("2026-02-02T00:00:00");
+const hoje = new Date();
+const diaAtual = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24)) + 1;
+
+const enigmas = [
+"O tempo só se perde quando não é compartilhado.",
+"Repare em quem faz o dia parecer mais curto.",
+"Algumas presenças silenciam o mundo.",
+"O coração reconhece antes da razão.",
+"Nem todo cuidado é dito em palavras.",
+"Quando alguém importa, o tempo muda.",
+"Há conexões que não pedem explicação.",
+"O mistério não é o que acontece, é com quem.",
+"Algumas escolhas começam antes da decisão.",
+"O tempo gosta de quem observa.",
+"Presença também é carinho.",
+"Nem todo sentimento faz barulho.",
+"Há pessoas que viram referência.",
+"Quando é real, sustenta.",
+"O tempo protege o verdadeiro.",
+"Algumas histórias pedem continuidade.",
+"Certezas não precisam de provas.",
+"O mistério está prestes a acabar.",
+"O tempo foi construído com você."
+];
+
+const container = document.getElementById("enigmas");
+
+enigmas.forEach((texto, index) => {
+  const div = document.createElement("div");
+  if (index + 1 <= diaAtual) {
+    div.className = "enigma ativo";
+    div.innerText = "Pista " + (index + 1) + ": " + texto;
+  } else {
+    div.className = "enigma";
+    div.innerText = "🔒 Enigma bloqueado";
+  }
+  container.appendChild(div);
+});
+
+function atualizarContador() {
+  const agora = new Date();
+  const diff = inicio - agora;
+  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+  document.getElementById("contador").innerText =
+    dias >= 0 ? `Faltam ${dias} dias para o início do jogo` : "O jogo começou";
+}
+
+atualizarContador();
+setInterval(atualizarContador, 60000);
+</script>
+
+</body>
+</html>
