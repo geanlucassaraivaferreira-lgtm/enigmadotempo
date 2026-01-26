@@ -7,127 +7,87 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap');
 
-body {
-  margin: 0;
-  padding: 40px;
-  background: radial-gradient(circle at top, #1a2a30, #000);
-  color: #f3e6c8;
-  font-family: 'IM Fell English', Georgia, serif;
-  text-align: center;
-  overflow-x: hidden;
+body{
+  margin:0;
+  padding:40px;
+  font-family:'IM Fell English',serif;
+  color:#f3e6c8;
+  text-align:center;
+  background:
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+    url("fundo.jpg") center/cover fixed no-repeat;
 }
 
-/* ✨ PARTÍCULAS */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(#ffd27d33 1px, transparent 1px);
-  background-size: 120px 120px;
-  animation: magia 40s linear infinite;
-  pointer-events: none;
+h1{
+  font-size:3em;
+  letter-spacing:3px;
 }
 
-@keyframes magia {
-  from { background-position: 0 0; }
-  to { background-position: 120px 120px; }
+.subtitle{
+  font-style:italic;
+  opacity:0.85;
+  margin-bottom:40px;
 }
 
-h1 {
-  font-size: 3em;
-  letter-spacing: 3px;
-}
-
-.subtitle {
-  font-style: italic;
-  opacity: 0.85;
-  margin-bottom: 40px;
-}
-
-#ativarSom {
-  background: #6b3e1d;
-  color: #f7ecd2;
-  border: none;
-  padding: 12px 26px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-family: inherit;
-  margin-bottom: 40px;
-}
-
-.pergaminho {
+.pergaminho{
   background: linear-gradient(#f7ecd2, #e4d1a1);
-  color: #3b2a1a;
-  border-radius: 20px;
-  padding: 35px;
-  margin: 40px auto;
-  max-width: 780px;
-  box-shadow: 0 0 50px rgba(255,215,140,0.3);
-  animation: abrirPergaminho 1.6s ease;
-  position: relative;
+  color:#3b2a1a;
+  border-radius:20px;
+  padding:35px;
+  margin:40px auto;
+  max-width:780px;
+  box-shadow:0 0 50px rgba(255,215,140,0.3);
+  animation:abrirPergaminho 1.4s ease;
 }
 
-@keyframes abrirPergaminho {
-  from {
-    opacity: 0;
-    transform: scaleY(0.2);
-  }
-  to {
-    opacity: 1;
-    transform: scaleY(1);
-  }
+@keyframes abrirPergaminho{
+  from{opacity:0;transform:scaleY(0.2)}
+  to{opacity:1;transform:scaleY(1)}
 }
 
-.pergaminho h2 {
-  color: #6b3e1d;
-  font-size: 1.8em;
+.contos{font-size:1.1em;line-height:1.8}
+
+.runas{
+  font-size:1.3em;
+  letter-spacing:3px;
+  opacity:0.5;
+  margin-top:10px;
 }
 
-.contos {
-  font-size: 1.1em;
-  line-height: 1.8;
+.enigma{
+  display:none;
+  margin-top:20px;
+  font-style:italic;
+  color:#5a2f14;
 }
 
-/* 🔒 RUNAS */
-.runas {
-  font-size: 1.2em;
-  letter-spacing: 3px;
-  opacity: 0.5;
+.secreto{
+  display:none;
+  margin-top:20px;
+  font-size:1.1em;
+  font-style:italic;
+  color:#6b3e1d;
 }
 
-.enigma {
-  display: none;
-  margin-top: 20px;
-  font-style: italic;
+button{
+  margin-top:25px;
+  padding:10px 24px;
+  border-radius:30px;
+  border:none;
+  background:#6b3e1d;
+  color:#f7ecd2;
+  cursor:pointer;
+  font-family:inherit;
 }
 
-.secreto {
-  display: none;
-  margin-top: 25px;
-  font-size: 1.1em;
-  font-style: italic;
-  color: #6b3e1d;
+button:hover{
+  background:#8b5630;
 }
 
-button.revelar {
-  margin-top: 25px;
-  padding: 10px 24px;
-  border-radius: 30px;
-  border: none;
-  background: #6b3e1d;
-  color: #f7ecd2;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-button.revelar:hover {
-  background: #8b5630;
-}
-
-video {
-  width: 100%;
-  border-radius: 14px;
-  margin-top: 25px;
+video{
+  width:100%;
+  border-radius:14px;
+  margin-top:25px;
 }
 </style>
 </head>
@@ -141,11 +101,11 @@ video {
 <audio id="ambiente" loop>
   <source src="ambiente.mp3" type="audio/mpeg">
 </audio>
-<audio id="novaMusica" loop>
-  <source src="musica.mp3.mp3" type="audio/mpeg">
+<audio id="selo">
+  <source src="msica.mp3.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 🌟 MENSAGEM INICIAL -->
+<!-- 🌟 MENSAGEM DE ABERTURA -->
 <div class="pergaminho">
   <div class="contos">
     <strong>Bom dia, princesa Gabriela 🤍</strong><br><br>
@@ -162,196 +122,185 @@ video {
 <div id="capitulos"></div>
 
 <script>
+// 🔊 Som ambiente
 document.getElementById("ativarSom").onclick = () => {
   document.getElementById("ambiente").play();
-  document.getElementById("novaMusica").play(); // nova música adicionada
-  
+  document.getElementById("ativarSom").style.display = "none";
 };
 
+// 🔐 Datas
 const dataInicio = new Date("2026-02-01T00:00:00");
 const hoje = new Date();
-let dias = Math.floor((hoje - dataInicio)/(1000*60*60*24))+1;
-if(dias<0) dias=0;
-if(dias>20) dias=20;
+let dias = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24)) + 1;
+if (dias < 0) dias = 0;
+if (dias > 20) dias = 20;
 
+// 🧾 Contos e enigmas
 const capitulos = [
 {
-t:"Capítulo I — O Sussurro Inicial",
-tx:`Na primeira dobra do tempo, um nome ecoou baixinho.
-Não era chamado. Era destino.`,
-e:"📌 Enigma: O que chega sem ser procurado?"
+  t:"Capítulo I — O Sussurro Inicial",
+  tx:`Na primeira dobra do tempo, um nome ecoou baixinho.<br>
+O Guardião sentiu o mundo tremular.`,
+  e:"📌 Enigma: O que chega sem ser procurado?"
 },
 {
-t:"Capítulo II — A Atenção",
-tx:`O Guardião aprendeu a observar.
-Nem tudo que importa faz barulho.`,
-e:"📌 Enigma: O que só aparece para quem presta atenção?"
+  t:"Capítulo II — A Atenção",
+  tx:`No silêncio, o Guardião ouviu o eco do coração.`,
+  e:"📌 Enigma: O que só aparece para quem presta atenção?"
 },
 {
-t:"Capítulo III — O Reconhecimento",
-tx:`Antes da lógica, veio o sentir.
-O coração reconheceu o que os olhos ainda aprendiam.`,
-e:"📌 Enigma: O que o coração entende primeiro?"
+  t:"Capítulo III — O Reconhecimento",
+  tx:`Antes de compreender, ele já sabia.<br>
+O coração tinha respondido.`,
+  e:"📌 Enigma: O que o coração sente primeiro?"
 },
 {
-t:"Capítulo IV — A Presença",
-tx:`Ela não fez promessas.
-Apenas ficou — e isso mudou tudo.`,
-e:"📌 Enigma: O que transforma um instante em permanência?"
+  t:"Capítulo IV — A Presença",
+  tx:`Ela simplesmente ficou.<br>
+E o mundo se acalmou.`,
+  e:"📌 Enigma: O que transforma presença em lar?"
 },
 {
-t:"Capítulo V — O Cuidado",
-tx:`Cuidar foi natural.
-Como se o tempo pedisse delicadeza.`,
-e:"📌 Enigma: O que cresce quando é cuidado?"
+  t:"Capítulo V — O Cuidado",
+  tx:`Cuidar foi a magia que o tempo respeitou.`,
+  e:"📌 Enigma: O que cresce quando é cuidado?"
 },
 {
-t:"Capítulo VI — O Silêncio Seguro",
-tx:`Entre eles, o silêncio não assustava.
+  t:"Capítulo VI — O Silêncio Seguro",
+  tx:`O silêncio não era vazio.<br>
 Era abrigo.`,
-e:"📌 Enigma: O que só existe quando há confiança?"
+  e:"📌 Enigma: O que só existe com confiança?"
 },
 {
-t:"Capítulo VII — A Escolha",
-tx:`Ficar deixou de ser acaso.
-Virou decisão.`,
-e:"📌 Enigma: Quando uma escolha começa de verdade?"
+  t:"Capítulo VII — A Escolha",
+  tx:`Ficar deixou de ser acaso.<br>
+Foi decisão.`,
+  e:"📌 Enigma: Quando a escolha realmente começa?"
 },
 {
-t:"Capítulo VIII — A Leveza",
-tx:`O tempo desacelerou.
+  t:"Capítulo VIII — A Leveza",
+  tx:`O tempo caminhava lento,<br>
 Não por medo — por vontade.`,
-e:"📌 Enigma: O que torna o caminho leve?"
+  e:"📌 Enigma: O que torna o caminho leve?"
 },
 {
-t:"Capítulo IX — O Laço",
-tx:`Nada foi amarrado.
-Mesmo assim, nada se soltou.`,
-e:"📌 Enigma: O que une sem prender?"
+  t:"Capítulo IX — O Laço",
+  tx:`Nada foi amarrado,<br>
+Mesmo assim nada se soltou.`,
+  e:"📌 Enigma: O que une sem prender?"
 },
 {
-t:"Capítulo X — A Espera Boa",
-tx:`Esperar já não doía.
-Era só mais um passo.`,
-e:"📌 Enigma: O que torna a espera tranquila?"
+  t:"Capítulo X — A Espera Boa",
+  tx:`Esperar já não doía.<br>
+Era fé tranquila.`,
+  e:"📌 Enigma: O que torna a espera leve?"
 },
 {
-t:"Capítulo XI — O Refúgio",
-tx:`Algumas pessoas viram casa.
-Mesmo longe.`,
-e:"📌 Enigma: Onde o coração descansa?"
+  t:"Capítulo XI — O Refúgio",
+  tx:`Algumas pessoas viram casa,<br>
+Mesmo no mais longe.`,
+  e:"📌 Enigma: Onde o coração descansa?"
 },
 {
-t:"Capítulo XII — A Luz",
-tx:`Mesmo nos dias escuros,
-havia algo que guiava.`,
-e:"📌 Enigma: O que ilumina sem cegar?"
+  t:"Capítulo XII — A Luz",
+  tx:`Mesmo na noite escura,<br>
+Havia algo que guiava.`,
+  e:"📌 Enigma: O que ilumina sem ferir?"
 },
 {
-t:"Capítulo XIII — O Juramento Invisível",
-tx:`Nada foi dito.
+  t:"Capítulo XIII — O Juramento Invisível",
+  tx:`Nada foi dito.<br>
 Tudo foi entendido.`,
-e:"📌 Enigma: O que vale mais que palavras?"
+  e:"📌 Enigma: O que vale mais que palavras?"
 },
 {
-t:"Capítulo XIV — A Travessia",
-tx:`Dragões surgiram.
-Eles atravessaram juntos.`,
-e:"📌 Enigma: O que vale enfrentar monstros?"
+  t:"Capítulo XIV — A Travessia",
+  tx:`Dragões surgiram,<br>
+Mas eles passaram juntos.`,
+  e:"📌 Enigma: O que vale enfrentar monstros?"
 },
 {
-t:"Capítulo XV — A Proteção",
-tx:`O Guardião protege aquilo que ama.
-Até do próprio tempo.`,
-e:"📌 Enigma: O que merece ser guardado?"
+  t:"Capítulo XV — A Proteção",
+  tx:`O Guardião protege o que ama,<br>
+Mesmo do próprio tempo.`,
+  e:"📌 Enigma: O que merece ser guardado?"
 },
 {
-t:"Capítulo XVI — O Amanhã",
-tx:`O futuro deixou de assustar.
-Começou a chamar.`,
-e:"📌 Enigma: O que faz o amanhã parecer seguro?"
+  t:"Capítulo XVI — O Amanhã",
+  tx:`O futuro deixou de assustar,<br>
+Agora chamava.`,
+  e:"📌 Enigma: O que faz o amanhã parecer seguro?"
 },
 {
-t:"Capítulo XVII — A Certeza",
-tx:`Não havia dúvida.
-Só silêncio e verdade.`,
-e:"📌 Enigma: O que se sente sem prova?"
+  t:"Capítulo XVII — A Certeza",
+  tx:`Não havia dúvida.<br>
+Havia verdade.`,
+  e:"📌 Enigma: O que se sente sem prova?"
 },
 {
-t:"Capítulo XVIII — A Revelação",
-tx:`O tempo começou a revelar seu segredo.`,
-e:"📌 Enigma: O que está prestes a acontecer?"
+  t:"Capítulo XVIII — A Revelação",
+  tx:`O tempo começou a revelar seu segredo.`,
+  e:"📌 Enigma: O que está prestes a acontecer?"
 },
 {
-t:"Capítulo XIX — O Último Passo",
-tx:`O Guardião parou.
+  t:"Capítulo XIX — O Último Passo",
+  tx:`O Guardião parou.<br>
 Era agora.`,
-e:"📌 Enigma: O que o tempo espera?"
+  e:"📌 Enigma: O que o tempo espera?"
 },
 {
-t:"Capítulo XX — A Joia do Tempo",
-tx:`O tempo esteve em risco.
-Não para ser detido…
+  t:"Capítulo XX — A Joia do Tempo",
+  tx:`O tempo esteve em risco.<br>
+Não para ser detido…<br>
 Mas para escolher com quem continuar.`,
-e:`<em>“A joia não para o tempo.
-Ela dá sentido a ele.”</em>
-<video controls>
-  <source src="final.mp4" type="video/mp4">
-</video>`
+  e:`<em>“A joia que eu trouxe não para o tempo.<br>
+Ela dá sentido a ele.”</em>`
 }
 ];
 
-
-
+// 🔹 Renderização Dinâmica
 const area = document.getElementById("capitulos");
 
-for(let i=0;i<dias;i++){
+for(let i = 0; i < dias; i++){
   const div = document.createElement("div");
   div.className = "pergaminho";
-
   div.innerHTML = `
     <h2>${capitulos[i].t}</h2>
-
     <div class="contos">${capitulos[i].tx}</div>
-
     <div class="runas">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ</div>
-
-    <button class="revelar"
-      onclick="
-        this.style.display='none';
-        this.nextElementSibling.style.display='block';
-        document.getElementById('selo').play();
-      ">
+    
+    <button onclick="
+      this.style.display='none';
+      this.nextElementSibling.style.display='block';
+      document.getElementById('selo').play();
+    ">
       Revelar Enigma
     </button>
-
+    
     <div class="enigma">${capitulos[i].e}</div>
+  `;
 
-    ${i === 19 ? `
+  // se for o último capítulo mostra vídeo
+  if(i === 19){
+    div.innerHTML += `
       <video controls>
-        <source src='final.mp4' type='video/mp4'>
+        <source src="final.mp4" type="video/mp4">
       </video>
       <div class="secreto">
         “A joia não para o tempo.<br>
         Ela escolhe com quem ele deve continuar.”
       </div>
-    ` : ``}
-  `;
+    `;
+  }
 
   area.appendChild(div);
-}
-
-    document.getElementById("selo").play();
-    div.querySelector(".runas").style.display="none";
-    div.querySelector(".enigma").style.display="block";
-    btn.style.display="none";
-    if(div.querySelector(".secreto")) div.querySelector(".secreto").style.display="block";
-  };
 }
 </script>
 
 </body>
 </html>
+
+
 
 
 
