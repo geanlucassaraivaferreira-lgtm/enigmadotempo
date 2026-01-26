@@ -136,127 +136,189 @@ if (dias < 0) dias = 0;
 if (dias > 20) dias = 20;
 
 // 🧾 Contos e enigmas
+
 const capitulos = [
 {
-  t:"Capítulo I — O Sussurro Inicial",
-  tx:`Na primeira dobra do tempo, um nome ecoou baixinho.<br>
-O Guardião sentiu o mundo tremular.`,
-  e:"📌 Enigma: O que chega sem ser procurado?"
+titulo: "Capítulo I — O Sussurro do Tempo",
+texto: `Na aurora de um dia que parecia comum,
+o tempo hesitou.
+Não por falha — mas por reconhecimento.
+
+Alguns encontros fazem o mundo respirar mais devagar.
+
+📌 Enigma: O que chega sem aviso, mas muda tudo?`
 },
 {
-  t:"Capítulo II — A Atenção",
-  tx:`No silêncio, o Guardião ouviu o eco do coração.`,
-  e:"📌 Enigma: O que só aparece para quem presta atenção?"
+titulo: "Capítulo II — Quando o Relógio Olhou Para Nós",
+texto: `Os ponteiros seguiram em frente,
+mas algo ficou para trás.
+Era o instante exato em que dois caminhos
+decidiram não mais andar sozinhos.
+
+📌 Enigma: O que anda sem pés e sente sem coração?`
 },
 {
-  t:"Capítulo III — O Reconhecimento",
-  tx:`Antes de compreender, ele já sabia.<br>
-O coração tinha respondido.`,
-  e:"📌 Enigma: O que o coração sente primeiro?"
+titulo: "Capítulo III — O Silêncio Que Abraça",
+texto: `Não havia palavras.
+E ainda assim, tudo foi dito.
+O silêncio, quando verdadeiro,
+é apenas outra forma de amor.
+
+📌 Enigma: O que fala mais quando não diz nada?`
 },
 {
-  t:"Capítulo IV — A Presença",
-  tx:`Ela simplesmente ficou.<br>
-E o mundo se acalmou.`,
-  e:"📌 Enigma: O que transforma presença em lar?"
+titulo: "Capítulo IV — A Promessa Não Dita",
+texto: `Entre um olhar e outro,
+nasceu uma promessa sem voz.
+Ela não foi jurada,
+foi sentida — e por isso permaneceu.
+
+📌 Enigma: O que não se promete, mas nunca se quebra?`
 },
 {
-  t:"Capítulo V — O Cuidado",
-  tx:`Cuidar foi a magia que o tempo respeitou.`,
-  e:"📌 Enigma: O que cresce quando é cuidado?"
+titulo: "Capítulo V — O Caminho Sem Medo",
+texto: `Seguir ao lado certo
+faz até o desconhecido parecer lar.
+Não era o destino que importava,
+mas a companhia.
+
+📌 Enigma: O que guia sem mostrar o caminho?`
 },
 {
-  t:"Capítulo VI — O Silêncio Seguro",
-  tx:`O silêncio não era vazio.<br>
-Era abrigo.`,
-  e:"📌 Enigma: O que só existe com confiança?"
+titulo: "Capítulo VI — O Ritmo do Coração",
+texto: `O tempo tentou impor seu compasso,
+mas o coração escolheu outro.
+E naquele ritmo imperfeito,
+nasceu algo eterno.
+
+📌 Enigma: O que não se mede, mas governa tudo?`
 },
 {
-  t:"Capítulo VII — A Escolha",
-  tx:`Ficar deixou de ser acaso.<br>
-Foi decisão.`,
-  e:"📌 Enigma: Quando a escolha realmente começa?"
+titulo: "Capítulo VII — Sob o Mesmo Céu",
+texto: `As estrelas assistiram em silêncio.
+Elas sabiam: aquele momento
+não seria esquecido nem pelo céu.
+
+📌 Enigma: O que brilha sem jamais tocar?`
 },
 {
-  t:"Capítulo VIII — A Leveza",
-  tx:`O tempo caminhava lento,<br>
-Não por medo — por vontade.`,
-  e:"📌 Enigma: O que torna o caminho leve?"
+titulo: "Capítulo VIII — O Toque Invisível",
+texto: `Mesmo à distância,
+algo os mantinha ligados.
+Não era força.
+Era escolha.
+
+📌 Enigma: O que une sem prender?`
 },
 {
-  t:"Capítulo IX — O Laço",
-  tx:`Nada foi amarrado,<br>
-Mesmo assim nada se soltou.`,
-  e:"📌 Enigma: O que une sem prender?"
+titulo: "Capítulo IX — Quando o Tempo Esperou",
+texto: `Houve um instante
+em que o tempo parou de correr
+e apenas observou.
+
+📌 Enigma: O que até o tempo respeita?`
 },
 {
-  t:"Capítulo X — A Espera Boa",
-  tx:`Esperar já não doía.<br>
-Era fé tranquila.`,
-  e:"📌 Enigma: O que torna a espera leve?"
+titulo: "Capítulo X — Metade da Jornada",
+texto: `Não era o começo.
+Não era o fim.
+Era o ponto onde já não havia volta —
+e nem vontade de voltar.
+
+📌 Enigma: O que só faz sentido depois de começar?`
 },
 {
-  t:"Capítulo XI — O Refúgio",
-  tx:`Algumas pessoas viram casa,<br>
-Mesmo no mais longe.`,
-  e:"📌 Enigma: Onde o coração descansa?"
+titulo: "Capítulo XI — A Esperança Persistente",
+texto: `Mesmo quando tudo parecia incerto,
+algo permanecia firme.
+Esperança não grita —
+ela permanece.
+
+📌 Enigma: O que nunca abandona quem acredita?`
 },
 {
-  t:"Capítulo XII — A Luz",
-  tx:`Mesmo na noite escura,<br>
-Havia algo que guiava.`,
-  e:"📌 Enigma: O que ilumina sem ferir?"
+titulo: "Capítulo XII — Ecos do Amanhã",
+texto: `O futuro não estava distante.
+Ele sussurrava no presente,
+pedindo apenas coragem.
+
+📌 Enigma: O que nasce hoje, mas vive amanhã?`
 },
 {
-  t:"Capítulo XIII — O Juramento Invisível",
-  tx:`Nada foi dito.<br>
-Tudo foi entendido.`,
-  e:"📌 Enigma: O que vale mais que palavras?"
+titulo: "Capítulo XIII — A Luz Que Não Cega",
+texto: `Não era uma luz que ofuscava,
+mas que guiava.
+Iluminava sem ferir,
+aquecia sem queimar.
+
+📌 Enigma: O que ilumina sem machucar?`
 },
 {
-  t:"Capítulo XIV — A Travessia",
-  tx:`Dragões surgiram,<br>
-Mas eles passaram juntos.`,
-  e:"📌 Enigma: O que vale enfrentar monstros?"
+titulo: "Capítulo XIV — O Peso Doce do Amor",
+texto: `Não era um fardo.
+Era presença.
+O tipo de peso que sustenta,
+não que afunda.
+
+📌 Enigma: O que pesa, mas fortalece?`
 },
 {
-  t:"Capítulo XV — A Proteção",
-  tx:`O Guardião protege o que ama,<br>
-Mesmo do próprio tempo.`,
-  e:"📌 Enigma: O que merece ser guardado?"
+titulo: "Capítulo XV — Além do Agora",
+texto: `O agora se expandiu.
+Deixou de ser instante
+e passou a ser promessa.
+
+📌 Enigma: O que começa no tempo, mas não termina nele?`
 },
 {
-  t:"Capítulo XVI — O Amanhã",
-  tx:`O futuro deixou de assustar,<br>
-Agora chamava.`,
-  e:"📌 Enigma: O que faz o amanhã parecer seguro?"
+titulo: "Capítulo XVI — O Chamado",
+texto: `Algumas vozes não vêm de fora.
+Elas surgem dentro do peito
+e exigem resposta.
+
+📌 Enigma: O que chama sem som?`
 },
 {
-  t:"Capítulo XVII — A Certeza",
-  tx:`Não havia dúvida.<br>
-Havia verdade.`,
-  e:"📌 Enigma: O que se sente sem prova?"
+titulo: "Capítulo XVII — A Escolha",
+texto: `Entre todas as possibilidades,
+uma foi escolhida.
+Não por acaso.
+Mas por amor.
+
+📌 Enigma: O que transforma destino em decisão?`
 },
 {
-  t:"Capítulo XVIII — A Revelação",
-  tx:`O tempo começou a revelar seu segredo.`,
-  e:"📌 Enigma: O que está prestes a acontecer?"
+titulo: "Capítulo XVIII — O Vínculo Invisível",
+texto: `Não havia correntes.
+Ainda assim, nada separava.
+O vínculo era mais forte
+por ser invisível.
+
+📌 Enigma: O que prende sem aprisionar?`
 },
 {
-  t:"Capítulo XIX — O Último Passo",
-  tx:`O Guardião parou.<br>
-Era agora.`,
-  e:"📌 Enigma: O que o tempo espera?"
+titulo: "Capítulo XIX — À Beira da Eternidade",
+texto: `O tempo se aproximava do limite.
+Não do fim —
+mas da revelação.
+
+📌 Enigma: O que antecede o eterno?`
 },
 {
-  t:"Capítulo XX — A Joia do Tempo",
-  tx:`O tempo esteve em risco.<br>
-Não para ser detido…<br>
-Mas para escolher com quem continuar.`,
-  e:`<em>“A joia que eu trouxe não para o tempo.<br>
-Ela dá sentido a ele.”</em>`
+titulo: "Capítulo XX — A Joia do Tempo",
+texto: `O tempo esteve em risco.
+
+Não para ser detido.
+Mas para escolher
+com quem continuar.
+
+📌 Enigma Final:
+A joia que eu trouxe não para o tempo.
+Ela dá sentido a ele.`
 }
 ];
+
+
 
 // 🔹 Renderização Dinâmica
 const area = document.getElementById("capitulos");
@@ -299,6 +361,7 @@ for(let i = 0; i < dias; i++){
 
 </body>
 </html>
+
 
 
 
