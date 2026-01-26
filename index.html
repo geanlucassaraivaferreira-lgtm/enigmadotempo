@@ -58,3 +58,74 @@ console.log("Capítulos inseridos");
 
 </body>
 </html>
+
+<h1>📜 O Guardião do Tempo</h1>
+<p class="subtitle">Uma história onde o tempo só avança quando o amor permite</p>
+
+<div id="capitulos"></div>
+
+<script>
+// 🔒 DATA DE INÍCIO
+const dataInicio = new Date("2026-02-01T00:00:00");
+const hoje = new Date();
+
+let diasLiberados = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24)) + 1;
+if (diasLiberados < 0) diasLiberados = 0;
+if (diasLiberados > 20) diasLiberados = 20;
+
+// 📖 CONTOS
+const capitulos = [
+{t:"Capítulo I — O Sussurro",tx:"O tempo sussurrou um nome que ainda não havia sido dito.",e:"📌 Enigma: O que começa antes do primeiro toque?"},
+{t:"Capítulo II — A Vigília",tx:"O Guardião observava, esperando alguém que não sabia esperar.",e:"📌 Enigma: Quem vigia sem dormir?"},
+{t:"Capítulo III — O Encontro",tx:"Alguns encontros não fazem barulho, mas mudam tudo.",e:"📌 Enigma: O que reconhecemos sem conhecer?"},
+{t:"Capítulo IV — A Permanência",tx:"Ela ficou. E isso foi suficiente.",e:"📌 Enigma: O que transforma um momento em lar?"},
+{t:"Capítulo V — O Cuidado",tx:"Cuidar foi o primeiro feitiço aprendido.",e:"📌 Enigma: O que protege sem prender?"},
+{t:"Capítulo VI — A Escolha",tx:"O tempo hesita quando alguém escolhe ficar.",e:"📌 Enigma: Quando uma escolha começa?"},
+{t:"Capítulo VII — O Silêncio Bom",tx:"Entre eles, o silêncio nunca foi vazio.",e:"📌 Enigma: O que só existe quando há confiança?"},
+{t:"Capítulo VIII — A Promessa Invisível",tx:"Nada foi dito, mas tudo foi prometido.",e:"📌 Enigma: O que vale mais que palavras?"},
+{t:"Capítulo IX — O Abrigo",tx:"O mundo podia ruir. Eles tinham um ao outro.",e:"📌 Enigma: Onde o coração descansa?"},
+{t:"Capítulo X — A Espera",tx:"Esperar deixou de ser dor.",e:"📌 Enigma: O que torna a espera leve?"},
+{t:"Capítulo XI — O Vínculo",tx:"O tempo tentou separar. Falhou.",e:"📌 Enigma: O que não se rompe?"},
+{t:"Capítulo XII — A Luz",tx:"Mesmo nos dias escuros, havia luz.",e:"📌 Enigma: O que ilumina sem queimar?"},
+{t:"Capítulo XIII — O Juramento",tx:"Alguns juramentos não precisam ser feitos.",e:"📌 Enigma: O que é eterno sem ser dito?"},
+{t:"Capítulo XIV — A Travessia",tx:"Eles atravessaram dúvidas juntos.",e:"📌 Enigma: O que vale enfrentar dragões?"},
+{t:"Capítulo XV — A Proteção",tx:"O Guardião protege aquilo que ama.",e:"📌 Enigma: O que merece ser guardado?"},
+{t:"Capítulo XVI — O Futuro",tx:"O amanhã deixou de assustar.",e:"📌 Enigma: O que faz o futuro desejar chegar?"},
+{t:"Capítulo XVII — A Certeza",tx:"O coração não hesitou.",e:"📌 Enigma: O que se sente sem prova?"},
+{t:"Capítulo XVIII — A Aproximação",tx:"O tempo começou a revelar seu segredo.",e:"📌 Enigma: O que está prestes a acontecer?"},
+{t:"Capítulo XIX — O Último Portal",tx:"O Guardião sabia: era agora.",e:"📌 Enigma: O que o tempo aguarda?"},
+{t:"Capítulo XX — A Joia do Tempo",tx:"O tempo foi salvo — não por magia, mas por escolha.",e:`
+<p style="font-style:italic;">
+“O tempo esteve em risco.<br><br>
+Atravessei dias, enfrentei silêncios,<br>
+dragões invisíveis e os confins do mundo.<br><br>
+Não para deter o tempo…<br>
+mas para escolher com quem ele deve continuar.”
+</p>
+
+<!-- 🎥 VÍDEO FINAL -->
+<video controls>
+  <source src="final.mp4" type="video/mp4">
+</video>
+`}
+];
+
+const area = document.getElementById("capitulos");
+
+if (diasLiberados === 0) {
+  area.innerHTML = `<p class="bloqueado">🔒 O Guardião do Tempo ainda observa.<br>Volte quando o tempo permitir.</p>`;
+}
+
+for (let i = 0; i < diasLiberados; i++) {
+  area.innerHTML += `
+    <div class="capitulo">
+      <h2>${capitulos[i].t}</h2>
+      <p>${capitulos[i].tx}</p>
+      <div class="enigma">${capitulos[i].e}</div>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
