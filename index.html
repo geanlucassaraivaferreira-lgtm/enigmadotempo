@@ -6,19 +6,65 @@
 
 <style>
 body {
-  background: radial-gradient(circle at top, #0b1d26, #000);
+  margin: 0;
+  padding: 40px;
+  background: linear-gradient(#0b1d26, #000);
   color: #f5f5f5;
   font-family: Georgia, serif;
   text-align: center;
-  padding: 40px;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-style: italic;
+  opacity: 0.8;
+  margin-bottom: 40px;
 }
 
 .capitulo {
   background: rgba(255,255,255,0.08);
-  border-radius: 16px;
+  border-radius: 14px;
   padding: 20px;
-  margin: 20px auto;
+  margin: 25px auto;
   max-width: 650px;
+  animation: aparecer 1s ease;
+}
+
+.capitulo h2 {
+  color: #ffd479;
+}
+
+.enigma {
+  margin-top: 15px;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.bloqueado {
+  margin-top: 60px;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+video {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 20px;
 }
 </style>
 </head>
@@ -26,62 +72,35 @@ body {
 <body>
 
 <h1>📜 O Guardião do Tempo</h1>
-<p>Se você está lendo isso, o tempo respondeu.</p>
+<p class="subtitle">Uma história onde o tempo escolhe com quem ficar</p>
 
 <div id="capitulos"></div>
 
 <script>
-console.log("JS iniciou");
-
-const capitulos = [
-  "O tempo sussurrou um nome.",
-  "Alguns encontros não pedem permissão.",
-  "Ela ficou. E isso foi tudo.",
-  "O silêncio deixou de ser vazio."
-];
-
-const area = document.getElementById("capitulos");
-
-if (!area) {
-  document.body.innerHTML += "<p>Erro: área não encontrada</p>";
-}
-
-for (let i = 0; i < capitulos.length; i++) {
-  const div = document.createElement("div");
-  div.className = "capitulo";
-  div.innerHTML = "<p>" + capitulos[i] + "</p>";
-  area.appendChild(div);
-}
-
-console.log("Capítulos inseridos");
-</script>
-
-</body>
-</html>
-
-<h1>📜 O Guardião do Tempo</h1>
-<p class="subtitle">Uma história onde o tempo só avança quando o amor permite</p>
-
-<div id="capitulos"></div>
-
-<script>
-// 🔒 DATA DE INÍCIO
+// ============================
+// CONFIGURAÇÃO DE DATA
+// ============================
 const dataInicio = new Date("2026-02-01T00:00:00");
 const hoje = new Date();
 
-let diasLiberados = Math.floor((hoje - dataInicio) / (1000 * 60 * 60 * 24)) + 1;
+let diasLiberados = Math.floor(
+  (hoje.getTime() - dataInicio.getTime()) / (1000 * 60 * 60 * 24)
+) + 1;
+
 if (diasLiberados < 0) diasLiberados = 0;
 if (diasLiberados > 20) diasLiberados = 20;
 
-// 📖 CONTOS
+// ============================
+// HISTÓRIA — O GUARDIÃO DO TEMPO
+// ============================
 const capitulos = [
-{t:"Capítulo I — O Sussurro",tx:"O tempo sussurrou um nome que ainda não havia sido dito.",e:"📌 Enigma: O que começa antes do primeiro toque?"},
-{t:"Capítulo II — A Vigília",tx:"O Guardião observava, esperando alguém que não sabia esperar.",e:"📌 Enigma: Quem vigia sem dormir?"},
-{t:"Capítulo III — O Encontro",tx:"Alguns encontros não fazem barulho, mas mudam tudo.",e:"📌 Enigma: O que reconhecemos sem conhecer?"},
-{t:"Capítulo IV — A Permanência",tx:"Ela ficou. E isso foi suficiente.",e:"📌 Enigma: O que transforma um momento em lar?"},
+{t:"Capítulo I — O Sussurro",tx:"O tempo sussurrou um nome antes mesmo de ser dito.",e:"📌 Enigma: O que começa antes do toque?"},
+{t:"Capítulo II — A Vigília",tx:"O Guardião esperava alguém que não sabia esperar.",e:"📌 Enigma: Quem vigia sem dormir?"},
+{t:"Capítulo III — O Encontro",tx:"Alguns encontros mudam tudo sem fazer barulho.",e:"📌 Enigma: O que reconhecemos sem conhecer?"},
+{t:"Capítulo IV — A Permanência",tx:"Ela ficou. E o tempo aceitou.",e:"📌 Enigma: O que transforma um momento em lar?"},
 {t:"Capítulo V — O Cuidado",tx:"Cuidar foi o primeiro feitiço aprendido.",e:"📌 Enigma: O que protege sem prender?"},
 {t:"Capítulo VI — A Escolha",tx:"O tempo hesita quando alguém escolhe ficar.",e:"📌 Enigma: Quando uma escolha começa?"},
-{t:"Capítulo VII — O Silêncio Bom",tx:"Entre eles, o silêncio nunca foi vazio.",e:"📌 Enigma: O que só existe quando há confiança?"},
+{t:"Capítulo VII — O Silêncio Bom",tx:"O silêncio deixou de ser vazio.",e:"📌 Enigma: O que só existe quando há confiança?"},
 {t:"Capítulo VIII — A Promessa Invisível",tx:"Nada foi dito, mas tudo foi prometido.",e:"📌 Enigma: O que vale mais que palavras?"},
 {t:"Capítulo IX — O Abrigo",tx:"O mundo podia ruir. Eles tinham um ao outro.",e:"📌 Enigma: Onde o coração descansa?"},
 {t:"Capítulo X — A Espera",tx:"Esperar deixou de ser dor.",e:"📌 Enigma: O que torna a espera leve?"},
@@ -89,7 +108,7 @@ const capitulos = [
 {t:"Capítulo XII — A Luz",tx:"Mesmo nos dias escuros, havia luz.",e:"📌 Enigma: O que ilumina sem queimar?"},
 {t:"Capítulo XIII — O Juramento",tx:"Alguns juramentos não precisam ser feitos.",e:"📌 Enigma: O que é eterno sem ser dito?"},
 {t:"Capítulo XIV — A Travessia",tx:"Eles atravessaram dúvidas juntos.",e:"📌 Enigma: O que vale enfrentar dragões?"},
-{t:"Capítulo XV — A Proteção",tx:"O Guardião protege aquilo que ama.",e:"📌 Enigma: O que merece ser guardado?"},
+{t:"Capítulo XV — A Proteção",tx:"O Guardião protege o que ama.",e:"📌 Enigma: O que merece ser guardado?"},
 {t:"Capítulo XVI — O Futuro",tx:"O amanhã deixou de assustar.",e:"📌 Enigma: O que faz o futuro desejar chegar?"},
 {t:"Capítulo XVII — A Certeza",tx:"O coração não hesitou.",e:"📌 Enigma: O que se sente sem prova?"},
 {t:"Capítulo XVIII — A Aproximação",tx:"O tempo começou a revelar seu segredo.",e:"📌 Enigma: O que está prestes a acontecer?"},
@@ -97,9 +116,7 @@ const capitulos = [
 {t:"Capítulo XX — A Joia do Tempo",tx:"O tempo foi salvo — não por magia, mas por escolha.",e:`
 <p style="font-style:italic;">
 “O tempo esteve em risco.<br><br>
-Atravessei dias, enfrentei silêncios,<br>
-dragões invisíveis e os confins do mundo.<br><br>
-Não para deter o tempo…<br>
+Não para detê-lo…<br>
 mas para escolher com quem ele deve continuar.”
 </p>
 
@@ -110,20 +127,23 @@ mas para escolher com quem ele deve continuar.”
 `}
 ];
 
+// ============================
+// RENDERIZAÇÃO
+// ============================
 const area = document.getElementById("capitulos");
 
 if (diasLiberados === 0) {
-  area.innerHTML = `<p class="bloqueado">🔒 O Guardião do Tempo ainda observa.<br>Volte quando o tempo permitir.</p>`;
+  area.innerHTML = "<p class='bloqueado'>🔒 O Guardião do Tempo ainda observa.<br>Volte quando o tempo permitir.</p>";
 }
 
 for (let i = 0; i < diasLiberados; i++) {
-  area.innerHTML += `
-    <div class="capitulo">
-      <h2>${capitulos[i].t}</h2>
-      <p>${capitulos[i].tx}</p>
-      <div class="enigma">${capitulos[i].e}</div>
-    </div>
-  `;
+  const div = document.createElement("div");
+  div.className = "capitulo";
+  div.innerHTML =
+    "<h2>" + capitulos[i].t + "</h2>" +
+    "<p>" + capitulos[i].tx + "</p>" +
+    "<div class='enigma'>" + capitulos[i].e + "</div>";
+  area.appendChild(div);
 }
 </script>
 
