@@ -7,128 +7,70 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap');
 
-body {
-  margin: 0;
-  padding: 40px;
-  background: radial-gradient(circle at top, #1a2a30, #000);
-  color: #f3e6c8;
-  font-family: 'IM Fell English', Georgia, serif;
-  text-align: center;
-  overflow-x: hidden;
+body{
+  margin:0;
+  padding:40px;
+  font-family:'IM Fell English',serif;
+  color:#f3e6c8;
+  text-align:center;
+  background:url("fundo.jpg") center/cover fixed no-repeat;
 }
 
-/* ✨ PARTÍCULAS */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(#ffd27d33 1px, transparent 1px);
-  background-size: 120px 120px;
-  animation: magia 40s linear infinite;
-  pointer-events: none;
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:-2;
 }
 
-@keyframes magia {
-  from { background-position: 0 0; }
-  to { background-position: 120px 120px; }
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:radial-gradient(#ffd27d33 1px,transparent 1px);
+  background-size:120px 120px;
+  animation:magia 40s linear infinite;
+  z-index:-1;
 }
 
-h1 {
-  font-size: 3em;
-  letter-spacing: 3px;
+@keyframes magia{
+  from{background-position:0 0}
+  to{background-position:120px 120px}
 }
 
-.subtitle {
-  font-style: italic;
-  opacity: 0.85;
-  margin-bottom: 40px;
+h1{font-size:3em;letter-spacing:3px}
+.subtitle{font-style:italic;opacity:.85;margin-bottom:40px}
+
+.pergaminho{
+  background:linear-gradient(#f7ecd2,#e4d1a1);
+  color:#3b2a1a;
+  border-radius:20px;
+  padding:35px;
+  margin:40px auto;
+  max-width:780px;
+  box-shadow:0 0 40px rgba(255,215,140,.3);
+  animation:abrir 1.5s ease;
 }
 
-#ativarSom {
-  background: #6b3e1d;
-  color: #f7ecd2;
-  border: none;
-  padding: 12px 26px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-family: inherit;
-  margin-bottom: 40px;
+@keyframes abrir{
+  from{opacity:0;transform:scaleY(.2)}
+  to{opacity:1;transform:scaleY(1)}
 }
 
-.pergaminho {
-  background: linear-gradient(#f7ecd2, #e4d1a1);
-  color: #3b2a1a;
-  border-radius: 20px;
-  padding: 35px;
-  margin: 40px auto;
-  max-width: 780px;
-  box-shadow: 0 0 50px rgba(255,215,140,0.3);
-  animation: abrirPergaminho 1.6s ease;
-  position: relative;
+.runas{letter-spacing:4px;opacity:.5}
+.enigma,.secreto{display:none;margin-top:20px;font-style:italic}
+button{
+  margin-top:20px;
+  padding:10px 24px;
+  border-radius:30px;
+  border:none;
+  background:#6b3e1d;
+  color:#f7ecd2;
+  cursor:pointer;
 }
 
-@keyframes abrirPergaminho {
-  from {
-    opacity: 0;
-    transform: scaleY(0.2);
-  }
-  to {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-}
-
-.pergaminho h2 {
-  color: #6b3e1d;
-  font-size: 1.8em;
-}
-
-.contos {
-  font-size: 1.1em;
-  line-height: 1.8;
-}
-
-/* 🔒 RUNAS */
-.runas {
-  font-size: 1.2em;
-  letter-spacing: 3px;
-  opacity: 0.5;
-}
-
-.enigma {
-  display: none;
-  margin-top: 20px;
-  font-style: italic;
-}
-
-.secreto {
-  display: none;
-  margin-top: 25px;
-  font-size: 1.1em;
-  font-style: italic;
-  color: #6b3e1d;
-}
-
-button.revelar {
-  margin-top: 25px;
-  padding: 10px 24px;
-  border-radius: 30px;
-  border: none;
-  background: #6b3e1d;
-  color: #f7ecd2;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-button.revelar:hover {
-  background: #8b5630;
-}
-
-video {
-  width: 100%;
-  border-radius: 14px;
-  margin-top: 25px;
-}
+video{width:100%;border-radius:14px;margin-top:25px}
 </style>
 </head>
 
@@ -137,80 +79,98 @@ video {
 <h1>📜 O Guardião do Tempo</h1>
 <p class="subtitle">Uma lenda onde o tempo só avança quando o amor permite</p>
 
-<button id="ativarSom">🔔 Ativar música do reino</button>
-<audio id="ambiente" loop>
-  <source src="ambiente.mp3" type="audio/mpeg">
-</audio>
-<audio id="selo">
-  <source src="selo.mp3" type="audio/mpeg">
-</audio>
-
-<!-- 🌟 MENSAGEM INICIAL -->
 <div class="pergaminho">
-  <div class="contos">
-    <strong>Bom dia, princesa Gabriela 🤍</strong><br><br>
-    Algo estranho começou hoje.<br>
-    O tempo… não está passando do jeito normal.<br><br>
-    Dizem que quando duas pessoas certas se cruzam,<br>
-    o relógio hesita.<br><br>
-    Eu fui designado como o Guardião do Tempo.<br>
-    Mas sozinho não consigo impedir o que está acontecendo.<br><br>
-    <em>📌 Pista nº 1: O que realmente importa nunca avisa quando chega.</em>
-  </div>
+  <strong>Bom dia, princesa Gabriella 🤍</strong><br><br>
+  Algo estranho começou hoje.<br>
+  O tempo não está passando como deveria.<br><br>
+  Dizem que quando duas almas certas se encontram,<br>
+  o relógio hesita.<br><br>
+  Eu fui designado como o Guardião do Tempo.<br>
+  Mas sozinho, não posso salvá-lo.
 </div>
 
 <div id="capitulos"></div>
 
 <script>
-document.getElementById("ativarSom").onclick = () => {
-  document.getElementById("ambiente").play();
-  document.getElementById("ativarSom").style.display = "none";
-};
-
-const dataInicio = new Date("2026-02-01T00:00:00");
+const inicio = new Date("2026-02-01");
 const hoje = new Date();
-let dias = Math.floor((hoje - dataInicio)/(1000*60*60*24))+1;
+let dias = Math.floor((hoje - inicio)/(1000*60*60*24))+1;
 if(dias<0) dias=0;
 if(dias>20) dias=20;
 
-const capitulos = Array.from({length:20},(_,i)=>({
-  t:`Capítulo ${i+1}`,
-  tx:`Neste dia, o Guardião avançou mais um passo.
-O tempo observava em silêncio.
-Algo crescia — sem pressa.`,
-  e:`📌 Enigma: O que cresce quanto mais é compartilhado?`
-}));
+const contos = [
+"Na alvorada, o tempo sussurrou seu nome pela primeira vez.",
+"O Guardião percebeu que alguns encontros dobram os ponteiros.",
+"Houve um dia em que esperar virou esperança.",
+"Nem toda demora é perda. Algumas são promessas.",
+"O silêncio também é uma forma de cuidado.",
+"O tempo se curva diante de quem permanece.",
+"Entre dúvidas, nasceu confiança.",
+"O relógio falhou quando dois olhares se cruzaram.",
+"Algumas histórias começam antes das palavras.",
+"O amor não corre. Ele fica.",
+"O Guardião entendeu que proteger é escolher.",
+"O tempo teme o que é verdadeiro.",
+"Mesmo longe, algo permanecia próximo.",
+"O coração aprende antes do calendário.",
+"O que é raro não se apressa.",
+"O tempo pediu licença para continuar.",
+"Nem toda joia brilha — algumas sentem.",
+"O futuro se revelou gentil.",
+"O último véu caiu.",
+"O tempo aguardou a decisão final."
+];
+
+const enigmas = [
+"O que vale mais quando é dividido?",
+"O que chega sem avisar?",
+"O que não se vê, mas se sente?",
+"O que cresce quando é cuidado?",
+"O que o tempo não leva?",
+"O que une sem prender?",
+"O que protege sem ferir?",
+"O que espera sem cansar?",
+"O que permanece no silêncio?",
+"O que transforma sem tocar?",
+"O que guia sem mandar?",
+"O que o coração reconhece?",
+"O que não precisa de provas?",
+"O que sobrevive à distância?",
+"O que faz o tempo hesitar?",
+"O que é promessa sem palavras?",
+"O que escolhe sem obrigar?",
+"O que é lar?",
+"O que vence o medo?",
+"O que salva o tempo?"
+];
 
 const area = document.getElementById("capitulos");
 
 for(let i=0;i<dias;i++){
-  const div=document.createElement("div");
-  div.className="pergaminho";
-  div.innerHTML=`
-    <h2>${capitulos[i].t}</h2>
-    <div class="contos">${capitulos[i].tx}</div>
-    <div class="runas">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ</div>
-    <button class="revelar">Revelar Enigma</button>
-    <div class="enigma">${capitulos[i].e}</div>
+  const d=document.createElement("div");
+  d.className="pergaminho";
+  d.innerHTML=`
+    <h2>Capítulo ${i+1}</h2>
+    <p>${contos[i]}</p>
+    <div class="runas">ᚠ ᚢ ᚦ ᚨ ᚱ</div>
+    <button>Revelar Enigma</button>
+    <div class="enigma">📌 ${enigmas[i]}</div>
     ${i===19?`
       <video controls>
         <source src="final.mp4" type="video/mp4">
       </video>
       <div class="secreto">
-        “A joia não para o tempo.<br>
-        Ela escolhe com quem ele deve continuar.”
-      </div>
-    `:""}
+        A joia não para o tempo.<br>
+        Ela escolhe com quem ele deve continuar.
+      </div>`:""}
   `;
-  area.appendChild(div);
+  area.appendChild(d);
 
-  const btn=div.querySelector(".revelar");
-  btn.onclick=()=>{
-    document.getElementById("selo").play();
-    div.querySelector(".runas").style.display="none";
-    div.querySelector(".enigma").style.display="block";
-    btn.style.display="none";
-    if(div.querySelector(".secreto")) div.querySelector(".secreto").style.display="block";
+  d.querySelector("button").onclick=()=>{
+    d.querySelector(".runas").style.display="none";
+    d.querySelector(".enigma").style.display="block";
+    d.querySelector("button").style.display="none";
+    if(d.querySelector(".secreto")) d.querySelector(".secreto").style.display="block";
   };
 }
 </script>
