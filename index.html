@@ -142,7 +142,7 @@ video {
   <source src="ambiente.mp3" type="audio/mpeg">
 </audio>
 <audio id="novaMusica" loop>
-  <source src="musica.mp3" type="audio/mpeg">
+  <source src="musica.mp3.mp3" type="audio/mpeg">
 </audio>
 
 <!-- 🌟 MENSAGEM INICIAL -->
@@ -165,7 +165,7 @@ video {
 document.getElementById("ativarSom").onclick = () => {
   document.getElementById("ambiente").play();
   document.getElementById("novaMusica").play(); // nova música adicionada
-  document.getElementById("ativarSom").style.display = "none";
+  
 };
 
 const dataInicio = new Date("2026-02-01T00:00:00");
@@ -218,5 +218,6 @@ for(let i=0;i<dias;i++){
 
 </body>
 </html>
+
 
 
