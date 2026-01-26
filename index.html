@@ -5,18 +5,37 @@
 <title>O Guardião do Tempo</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap');
+
 body {
   margin: 0;
   padding: 40px;
   background: radial-gradient(circle at top, #1a2a30, #000);
   color: #f3e6c8;
-  font-family: Georgia, serif;
+  font-family: 'IM Fell English', Georgia, serif;
   text-align: center;
+  overflow-x: hidden;
+}
+
+/* ✨ PARTÍCULAS */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(#ffd27d33 1px, transparent 1px);
+  background-size: 120px 120px;
+  animation: magia 40s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes magia {
+  from { background-position: 0 0; }
+  to { background-position: 120px 120px; }
 }
 
 h1 {
-  font-size: 2.8em;
-  letter-spacing: 2px;
+  font-size: 3em;
+  letter-spacing: 3px;
 }
 
 .subtitle {
@@ -29,10 +48,10 @@ h1 {
   background: #6b3e1d;
   color: #f7ecd2;
   border: none;
-  padding: 10px 24px;
+  padding: 12px 26px;
   border-radius: 30px;
   cursor: pointer;
-  font-family: Georgia, serif;
+  font-family: inherit;
   margin-bottom: 40px;
 }
 
@@ -40,65 +59,75 @@ h1 {
   background: linear-gradient(#f7ecd2, #e4d1a1);
   color: #3b2a1a;
   border-radius: 20px;
-  padding: 30px;
-  margin: 35px auto;
-  max-width: 760px;
-  box-shadow: 0 0 45px rgba(255,215,140,0.25);
-  animation: abrir 1.4s ease;
+  padding: 35px;
+  margin: 40px auto;
+  max-width: 780px;
+  box-shadow: 0 0 50px rgba(255,215,140,0.3);
+  animation: abrirPergaminho 1.6s ease;
+  position: relative;
+}
+
+@keyframes abrirPergaminho {
+  from {
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
 }
 
 .pergaminho h2 {
   color: #6b3e1d;
+  font-size: 1.8em;
 }
 
 .contos {
-  font-size: 1.05em;
-  line-height: 1.7;
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+/* 🔒 RUNAS */
+.runas {
+  font-size: 1.2em;
+  letter-spacing: 3px;
+  opacity: 0.5;
 }
 
 .enigma {
   display: none;
   margin-top: 20px;
   font-style: italic;
-  color: #5a2f14;
+}
+
+.secreto {
+  display: none;
+  margin-top: 25px;
+  font-size: 1.1em;
+  font-style: italic;
+  color: #6b3e1d;
 }
 
 button.revelar {
-  margin-top: 20px;
-  padding: 10px 22px;
+  margin-top: 25px;
+  padding: 10px 24px;
   border-radius: 30px;
   border: none;
   background: #6b3e1d;
   color: #f7ecd2;
   cursor: pointer;
-  font-family: Georgia, serif;
+  font-family: inherit;
 }
 
 button.revelar:hover {
   background: #8b5630;
 }
 
-.bloqueado {
-  margin-top: 80px;
-  font-style: italic;
-  opacity: 0.6;
-}
-
-@keyframes abrir {
-  from {
-    opacity: 0;
-    transform: scale(0.96) translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
 video {
   width: 100%;
   border-radius: 14px;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 </style>
 </head>
@@ -109,29 +138,23 @@ video {
 <p class="subtitle">Uma lenda onde o tempo só avança quando o amor permite</p>
 
 <button id="ativarSom">🔔 Ativar música do reino</button>
-<audio id="som">
+<audio id="ambiente" loop>
   <source src="ambiente.mp3" type="audio/mpeg">
 </audio>
+<audio id="selo">
+  <source src="selo.mp3" type="audio/mpeg">
+</audio>
 
-<!-- 🌟 MENSAGEM DE ABERTURA -->
+<!-- 🌟 MENSAGEM INICIAL -->
 <div class="pergaminho">
   <div class="contos">
     <strong>Bom dia, princesa Gabriela 🤍</strong><br><br>
-
     Algo estranho começou hoje.<br>
     O tempo… não está passando do jeito normal.<br><br>
-
     Dizem que quando duas pessoas certas se cruzam,<br>
     o relógio hesita.<br><br>
-
     Eu fui designado como o Guardião do Tempo.<br>
     Mas sozinho não consigo impedir o que está acontecendo.<br><br>
-
-    Se você notar algo diferente hoje —<br>
-    um detalhe, um sorriso fora de hora,<br>
-    um pensamento que insiste —<br>
-    guarde isso.<br><br>
-
     <em>📌 Pista nº 1: O que realmente importa nunca avisa quando chega.</em>
   </div>
 </div>
@@ -139,39 +162,56 @@ video {
 <div id="capitulos"></div>
 
 <script>
-document.getElementById("ativarSom").onclick = function() {
-  document.getElementById("som").play();
-  this.style.display = "none";
+document.getElementById("ativarSom").onclick = () => {
+  document.getElementById("ambiente").play();
+  document.getElementById("ativarSom").style.display = "none";
 };
 
 const dataInicio = new Date("2026-02-01T00:00:00");
 const hoje = new Date();
+let dias = Math.floor((hoje - dataInicio)/(1000*60*60*24))+1;
+if(dias<0) dias=0;
+if(dias>20) dias=20;
 
-let diasLiberados = Math.floor((hoje - dataInicio) / (1000*60*60*24)) + 1;
-if (diasLiberados < 0) diasLiberados = 0;
-if (diasLiberados > 20) diasLiberados = 20;
-
-/* (CAPÍTULOS — MANTIDOS IGUAIS AO SEU CÓDIGO) */
-const capitulos = [ /* … seus 20 capítulos, sem alteração … */ ];
+const capitulos = Array.from({length:20},(_,i)=>({
+  t:`Capítulo ${i+1}`,
+  tx:`Neste dia, o Guardião avançou mais um passo.
+O tempo observava em silêncio.
+Algo crescia — sem pressa.`,
+  e:`📌 Enigma: O que cresce quanto mais é compartilhado?`
+}));
 
 const area = document.getElementById("capitulos");
 
-if (diasLiberados === 0) {
-  area.innerHTML = "<p class='bloqueado'>🔒 O Guardião ainda observa. Volte quando o tempo permitir.</p>";
-}
-
-for (let i = 0; i < diasLiberados; i++) {
-  const div = document.createElement("div");
-  div.className = "pergaminho";
-  div.innerHTML = `
+for(let i=0;i<dias;i++){
+  const div=document.createElement("div");
+  div.className="pergaminho";
+  div.innerHTML=`
     <h2>${capitulos[i].t}</h2>
     <div class="contos">${capitulos[i].tx}</div>
-    <button class="revelar" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'">
-      Revelar o enigma
-    </button>
+    <div class="runas">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ</div>
+    <button class="revelar">Revelar Enigma</button>
     <div class="enigma">${capitulos[i].e}</div>
+    ${i===19?`
+      <video controls>
+        <source src="final.mp4" type="video/mp4">
+      </video>
+      <div class="secreto">
+        “A joia não para o tempo.<br>
+        Ela escolhe com quem ele deve continuar.”
+      </div>
+    `:""}
   `;
   area.appendChild(div);
+
+  const btn=div.querySelector(".revelar");
+  btn.onclick=()=>{
+    document.getElementById("selo").play();
+    div.querySelector(".runas").style.display="none";
+    div.querySelector(".enigma").style.display="block";
+    btn.style.display="none";
+    if(div.querySelector(".secreto")) div.querySelector(".secreto").style.display="block";
+  };
 }
 </script>
 
