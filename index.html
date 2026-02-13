@@ -10,24 +10,24 @@
 <style>
 
 /* ----------------------------------------------------------
-   TEMA ROSA MEDIEVAL
+   TEMA ROSA ELEGANTE (FUNDO ESCURO + DETALHES ROSA)
 ---------------------------------------------------------- */
 body{
   margin:0;
   padding:40px;
   font-family:'Cormorant Garamond', serif;
-  color:#ffe8f2;
+  color:#f7e9f3; /* texto suave */
   text-align:center;
   overflow-x:hidden;
 
   background:
-    radial-gradient(circle at top, rgba(255,150,200,0.35), rgba(0,0,0,0.9)),
-    url("fundoRosaMedieval.jpg") center/cover fixed no-repeat;
+    radial-gradient(circle at top, rgba(0,0,0,0.5), rgba(0,0,0,0.92)),
+    url("fundoMedieval.jpg") center/cover fixed no-repeat;
 }
 
 
 /* ----------------------------------------------------------
-   BRILHOS MÁGICOS
+   BRILHOS MÁGICOS EM ROSA
 ---------------------------------------------------------- */
 @keyframes brilho {
   0% {opacity:0.2; transform:translateY(0px);}
@@ -40,7 +40,7 @@ body{
   width:6px;
   height:6px;
   border-radius:50%;
-  background:#ffccd9;
+  background:#ffbada;
   box-shadow:0 0 10px #ffcce0;
   animation:brilho 4s infinite ease-in-out;
   pointer-events:none;
@@ -48,7 +48,7 @@ body{
 
 
 /* ----------------------------------------------------------
-   PÉTALAS CAINDO
+   PÉTALAS ROSA CAINDO
 ---------------------------------------------------------- */
 @keyframes cair {
   to { transform:translateY(110vh) rotate(360deg); }
@@ -56,13 +56,13 @@ body{
 
 
 /* ----------------------------------------------------------
-   TÍTULO E SUBTÍTULO
+   TÍTULOS
 ---------------------------------------------------------- */
 h1{
   font-size:3.6em;
   font-family:'IM Fell English';
   letter-spacing:4px;
-  text-shadow:0 0 20px rgba(255,180,220,0.8);
+  text-shadow:0 0 20px rgba(255,150,190,0.6);
 }
 
 .subtitle{
@@ -79,8 +79,8 @@ h1{
   font-size:1.6em;
   margin-bottom:25px;
   padding:10px 20px;
-  background:rgba(255,180,210,0.15);
-  border:1px solid rgba(255,200,230,0.4);
+  background:rgba(255,180,210,0.08);
+  border:1px solid rgba(255,200,230,0.25);
   border-radius:14px;
   display:inline-block;
   text-shadow:0 0 12px #f8cce2;
@@ -88,18 +88,18 @@ h1{
 
 
 /* ----------------------------------------------------------
-   PERGAMINHO MEDIEVAL ROSA
+   PERGAMINHO (BEGE MEDIEVAL ORIGINAL)
 ---------------------------------------------------------- */
 .pergaminho{
-  background:url("papelRosa.jpg") center/cover;
-  color:#5a2c3b;
+  background:url("papelAntigo.jpg") center/cover;
+  color:#3b2a1a;
   border-radius:24px;
   padding:40px;
   margin:45px auto;
   max-width:830px;
-  border:2px solid rgba(255,190,220,0.25);
+  border:2px solid rgba(255,200,230,0.25);
   box-shadow:
-    0 0 25px rgba(255,170,200,0.3),
+    0 0 25px rgba(255,160,200,0.25),
     inset 0 0 20px rgba(255,240,250,0.4);
   animation:fadein 1s ease;
 }
@@ -114,9 +114,13 @@ h1{
   line-height:1.85;
 }
 
+
+/* ----------------------------------------------------------
+   RUNAS
+---------------------------------------------------------- */
 .runas{
   margin-top:15px;
-  opacity:0.6;
+  opacity:0.55;
   font-size:1.4em;
   font-family:'IM Fell English';
   letter-spacing:4px;
@@ -124,19 +128,19 @@ h1{
 
 
 /* ----------------------------------------------------------
-   BOTÕES
+   BOTÕES (ROSA ELEGANTE)
 ---------------------------------------------------------- */
 button{
   margin-top:25px;
   padding:12px 30px;
   border-radius:40px;
   border:none;
-  background:#a84e74;
+  background:#a84e74; /* rosa antigo elegante */
   color:#ffe7f5;
   font-family:'IM Fell English';
   cursor:pointer;
   font-size:1.15em;
-  box-shadow:0 0 10px rgba(255,200,220,0.5);
+  box-shadow:0 0 10px rgba(255,200,220,0.35);
   transition:0.25s;
 }
 
@@ -147,7 +151,7 @@ button:hover{
 
 
 /* ----------------------------------------------------------
-   ENIGMAS E MOMENTOS SURPRESA
+   ENIGMAS / SURPRESAS
 ---------------------------------------------------------- */
 .enigma{
   display:none;
@@ -155,13 +159,6 @@ button:hover{
   font-style:italic;
   font-size:1.2em;
   color:#6d3d52;
-}
-
-.momentoSurpresa{
-  display:none;
-  margin-top:20px;
-  color:#7b3c65;
-  font-style:italic;
 }
 
 
@@ -182,17 +179,6 @@ button:hover{
 
 
 /* ----------------------------------------------------------
-   VÍDEO
----------------------------------------------------------- */
-video{
-  width:100%;
-  border-radius:15px;
-  margin-top:25px;
-  box-shadow:0 0 20px rgba(255,210,230,0.4);
-}
-
-
-/* ----------------------------------------------------------
    RESPONSIVO (modo aplicativo)
 ---------------------------------------------------------- */
 @media(max-width: 600px){
@@ -203,7 +189,13 @@ video{
   button{ padding:10px 22px; font-size:1.05em; }
 }
 
-� O Guardião do Tempo</h1>
+</style>
+</head>
+
+
+<body>
+
+<h1>📜 O Guardião do Tempo</h1>
 <p class="subtitle">Uma lenda onde o tempo só avança quando o amor permite</p>
 
 <div class="countdown" id="contador"></div>
@@ -218,7 +210,6 @@ video{
   efeitoPergaminho.mp3
 </audio>
 
-
 <!-- ABERTURA -->
 <div class="pergaminho">
   <div class="contos">
@@ -231,16 +222,9 @@ video{
   </div>
 </div>
 
-
-<!-- CAPÍTULOS -->
 <div id="capitulos"></div>
-
-
+   <!-- BRILHOS MÁGICOS -->
 <script>
-
-////////////////////////////////////////////////////////////////////////////////////
-// BRILHOS MAGICOS
-////////////////////////////////////////////////////////////////////////////////////
 for(let i=0;i<25;i++){
   const s=document.createElement("div");
   s.className="sparkle";
@@ -249,10 +233,10 @@ for(let i=0;i<25;i++){
   s.style.animationDelay=(Math.random()*3)+"s";
   document.body.appendChild(s);
 }
+</script>
 
-////////////////////////////////////////////////////////////////////////////////////
-// PÉTALAS
-////////////////////////////////////////////////////////////////////////////////////
+<!-- PÉTALAS ROSA CAINDO -->
+<script>
 for (let i=0; i<25; i++){
   let petala = document.createElement("div");
   petala.innerHTML = "🌸";
@@ -264,18 +248,18 @@ for (let i=0; i<25; i++){
   petala.style.animation = `cair ${5+Math.random()*6}s linear infinite`;
   document.body.appendChild(petala);
 }
+</script>
 
-////////////////////////////////////////////////////////////////////////////////////
-// MÚSICA
-////////////////////////////////////////////////////////////////////////////////////
+<!-- MÚSICA DO REINO -->
+<script>
 document.getElementById("ativarSom").onclick = () => {
   document.getElementById("ambiente").play();
   document.getElementById("ativarSom").style.display = "none";
 };
+</script>
 
-////////////////////////////////////////////////////////////////////////////////////
-// CONTAGEM REGRESSIVA DE 10 DIAS
-////////////////////////////////////////////////////////////////////////////////////
+<!-- CONTAGEM REGRESSIVA (10 DIAS) -->
+<script>
 const alvo = new Date();
 alvo.setDate(alvo.getDate() + 10);
 
@@ -284,7 +268,7 @@ function atualizarContagem(){
   const diff = alvo - agora;
 
   if(diff <= 0){
-    document.getElementById("contador").innerHTML = "✨ O dia chegou ✨";
+    document.getElementById("contador").innerHTML = "✨ O Grande Dia Chegou ✨";
     return;
   }
 
@@ -299,11 +283,14 @@ function atualizarContagem(){
 
 setInterval(atualizarContagem, 1000);
 atualizarContagem();
+</script>
 
-////////////////////////////////////////////////////////////////////////////////////
-// CAPÍTLULOS — COMPLETO (1 A 20)
-////////////////////////////////////////////////////////////////////////////////////
+   <!-- CAPÍTULOS COMPLETOS (1 → 20) -->
+<script>
 const capitulos = [
+
+/* ------------------------------ CAPÍTULOS ORIGINAIS 1 A 10 ------------------------------ */
+
 {
 t:"Capítulo I — O Sussurro do Tempo",
 tx:`Na aurora de um dia comum, o tempo hesitou.<br>
@@ -313,6 +300,7 @@ O Guardião sentiu o chamado.<br>
 E soube: nada seria como antes.`,
 e:"📌 Enigma: O que chega sem avisar, mas muda tudo?"
 },
+
 {
 t:"Capítulo II — O Primeiro Olhar",
 tx:`Não houve trovões, nem sinais no céu.<br>
@@ -322,6 +310,7 @@ Alguns encontros não pedem permissão.<br>
 Eles simplesmente acontecem.`,
 e:"📌 Enigma: O que é visto antes de ser entendido?"
 },
+
 {
 t:"Capítulo III — A Hesitação",
 tx:`O coração avançou antes da razão.<br>
@@ -331,6 +320,7 @@ O Guardião sabia do risco.<br>
 Mesmo assim, permaneceu.`,
 e:"📌 Enigma: O que só existe quando se escolhe ficar?"
 },
+
 {
 t:"Capítulo IV — O Silêncio Seguro",
 tx:`As palavras descansaram.<br>
@@ -340,6 +330,7 @@ O tempo observava em paz.<br>
 Confiar tornou-se natural.`,
 e:"📌 Enigma: O que fala mais quando não diz nada?"
 },
+
 {
 t:"Capítulo V — O Vínculo Invisível",
 tx:`Nada foi prometido.<br>
@@ -349,6 +340,7 @@ O tempo tentou afastar.<br>
 Fracassou.`,
 e:"📌 Enigma: O que prende sem aprisionar?"
 },
+
 {
 t:"Capítulo VI — A Primeira Provação",
 tx:`Dúvidas surgiram como sombras.<br>
@@ -358,6 +350,7 @@ Mas lembrou por quem lutava.<br>
 E seguiu.`,
 e:"📌 Enigma: O que faz alguém enfrentar monstros que ninguém vê?"
 },
+
 {
 t:"Capítulo VII — A Espera",
 tx:`Esperar deixou de ser dor.<br>
@@ -367,6 +360,7 @@ O tempo, antes inimigo, aguardava.<br>
 Sabia o que vinha.`,
 e:"📌 Enigma: O que torna a espera suportável?"
 },
+
 {
 t:"Capítulo VIII — O Abrigo",
 tx:`Mesmo em meio ao caos, havia refúgio.<br>
@@ -376,6 +370,7 @@ O mundo podia ruir.<br>
 Aquilo permanecia.`,
 e:"📌 Enigma: Onde o coração repousa?"
 },
+
 {
 t:"Capítulo IX — O Cuidado",
 tx:`Cuidar não exigiu feitiços.<br>
@@ -385,6 +380,7 @@ Acolher sem invadir.<br>
 Amar sem possuir.`,
 e:"📌 Enigma: O que fortalece sem dominar?"
 },
+
 {
 t:"Capítulo X — Metade do Caminho",
 tx:`O retorno já não era opção.<br>
@@ -395,139 +391,156 @@ E sorriu.`,
 e:"📌 Enigma: O que só percebemos depois de começar?"
 },
 
-/* AQUI COMEÇA OS NOVOS REESCRITOS — 11 ATÉ 20 */
+
+/* ------------------------------ CAPÍTULOS NOVOS 11 A 20 ------------------------------ */
 
 {
 t:"Capítulo XI — A Luz Que Não Se Apaga",
 tx:`Mesmo quando a noite parecia engolir o mundo, havia uma luz que nunca se apagava.<br><br>
-Ela não queimava, não feria.<br>
-Era uma luz que reconhecia caminhos antes mesmo que ele os percebesse.<br><br>
-O Guardião caminhava por memórias profundas, mares emocionais, florestas do coração — e em todas elas, havia uma única presença constante:<br><br>
-<strong>Ela.</strong><br><br>
-E foi então que o Guardião entendeu:<br>
+Ela não queimava, não feria — apenas guiava.<br>
+Uma luz que reconhecia caminhos antes mesmo que o Guardião os percebesse.<br><br>
+E então ele entendeu:<br>
 algumas luzes não iluminam o caminho.<br>
 Elas iluminam <em>quem caminha.</em>`,
 e:"📌 Enigma: O que ilumina sem ferir?"
 },
+
 {
 t:"Capítulo XII — O Futuro Que Sussurra",
 tx:`O futuro deixou de rugir como tempestade.<br>
-Agora sussurrava, suave, quase tímido.<br><br>
-Era um convite — não um aviso.<br>
+Agora sussurrava — suave, quase tímido.<br><br>
 Chamava para dias que ainda não existiam,<br>
 mas que o Guardião já conseguia sentir.<br><br>
-E nesses dias, havia risadas compartilhadas,<br>
-sonhos feitos em par,<br>
-e o tipo de paz que só acontece quando o coração encontra seu lugar certo.`,
+Um futuro feito de risadas compartilhadas,<br>
+noites tranquilas,<br>
+e sonhos construídos em par.`,
 e:"📌 Enigma: O que faz o futuro desejar chegar?"
 },
+
 {
 t:"Capítulo XIII — A Escolha Que Forma Destinos",
 tx:`Nada mais era impulso.<br>
-Cada gesto vinha carregado de significado.<br>
-Cada silêncio era uma promessa velada.<br><br>
-A escolha de ficar — antes espontânea — tornou‑se ritual, tornou‑se verbo, tornou‑se destino.<br><br>
-Dizem que o destino escolhe as pessoas.<br>
-Mas o Guardião sabia:<br>
-às vezes… é a gente que escolhe o destino.`,
+Cada gesto carregava intenção.<br>
+Cada silêncio, uma promessa.<br><br>
+A escolha de ficar tornou‑se ritual,<br>
+tornou‑se verbo,<br>
+tornou‑se destino.<br><br>
+Ali, o Guardião percebeu:<br>
+destino não é quem encontramos.<br>
+É quem escolhemos — todos os dias.`,
 e:"📌 Enigma: Quando uma escolha se torna destino?"
 },
+
 {
 t:"Capítulo XIV — A Travessia das Sombras",
-tx:`Os dias difíceis vieram.<br>
-As sombras também.<br><br>
-Mas elas não chegaram para separar — chegaram para testar.<br><br>
+tx:`As sombras vieram — não para separar,<br>
+mas para testar o que já era forte.<br><br>
 A travessia foi longa.<br>
 Às vezes doeu.<br>
 Às vezes pesou.<br><br>
-Mas quando duas almas atravessam a mesma tempestade,<br>
-elas nunca voltam iguais.<br><br>
+Mas duas almas que atravessam a mesma tempestade<br>
+nunca voltam iguais.<br><br>
 Elas voltam mais fortes.`,
 e:"📌 Enigma: O que transforma dor em união?"
 },
+
 {
 t:"Capítulo XV — O Juramento Invisível",
-tx:`Não havia coroas ou rituais.<br>
+tx:`Não havia coroas.<br>
+Não havia cerimônias.<br><br>
 Havia apenas um juramento silencioso:<br><br>
 <strong>“Eu te guardo.  
 Eu te vejo.  
 Eu não solto a tua mão.”</strong><br><br>
-A proteção do Guardião nunca foi feita de força.<br>
-Era feita de presença — e de amor.`,
+A proteção do Guardião não vinha da força —<br>
+mas do amor.`,
 e:"📌 Enigma: O que merece ser guardado?"
 },
+
 {
 t:"Capítulo XVI — O Chamado do Tempo",
-tx:`O tempo voltou a chamá-lo.<br>
-Não com urgência — mas com verdade.<br><br>
-Ele sentiu que não podia mais adiar aquilo que crescia dentro dele.<br>
-Era a hora de avançar para a parte da história que realmente importava.<br><br>
-A coragem não era ausência de medo.<br>
+tx:`O tempo o chamou.<br><br>
+Não como ameaça — mas como verdade.<br><br>
+Era hora de avançar para a parte da história<br>
+que realmente importa.<br><br>
+A coragem não era a falta de medo.<br>
 Era a decisão de seguir mesmo assim.`,
 e:"📌 Enigma: O que o tempo exige dos corajosos?"
 },
+
 {
 t:"Capítulo XVII — Antes das Palavras",
 tx:`O silêncio agora ardia.<br>
-Mas não era desconforto — era verdade acumulada.<br><br>
-O Guardião carregava algo no peito que já não cabia mais apenas dentro dele.<br><br>
-Era sentimento.  
-Era destino.  
-Era início.  
-Era fim.  
-Era tudo ao mesmo tempo.<br><br>
-Ele respirou fundo.  
+Mas não era vazio — era verdade acumulada.<br><br>
+O Guardião carregava algo no peito<br>
+que não cabia mais somente dentro dele.<br><br>
+Era início e destino.  
+Era promessa e futuro.<br><br>
 O momento estava próximo.`,
 e:"📌 Enigma: O que se sente antes de ser dito?"
 },
+
 {
 t:"Capítulo XVIII — O Portal do Sempre",
-tx:`O portal surgiu, imenso, antigo, vivo.<br><br>
-Não era passagem para outro lugar —  
-era passagem para outra versão de si mesmo.<br><br>
-O Guardião sabia que quem atravessasse aquele portal  
+tx:`O portal surgiu: imenso, antigo, vivo.<br><br>
+Não levava a outro lugar —  
+levava a outra versão de si mesmo.<br><br>
+Quem atravessasse aquele portal<br>
 não viveria apenas um tempo.<br>
-Viveria <em>todos</em> os tempos ao lado de quem escolheu.<br><br>
-E isso muda tudo.`,
+Viveria <em>todos</em> ao lado de quem escolheu.`,
 e:"📌 Enigma: O que separa intenção de eternidade?"
 },
+
 {
 t:"Capítulo XIX — A Aproximação Inevitável",
 tx:`Ele avançou.<br>
 O mundo ficou silencioso.<br><br>
-Não havia mais fuga, dúvida ou sombra.<br><br>
-A verdade o puxava, doce como promessa,<br>
-forte como destino escrito nas estrelas.<br><br>
-Tudo o que viveu convergiu para esse instante.<br>
-E o Guardião sabia:<br>
-ele estava a um passo do que sempre procurou.`,
+A verdade o puxava,<br>
+doce como promessa,<br>
+forte como destino.<br><br>
+Tudo o que viveu<br>
+convergia para esse instante.`,
 e:"📌 Enigma: O que o tempo espera de quem ama?"
 },
+
 {
 t:"Capítulo XX — A Joia do Tempo",
 tx:`O tempo tremeu em expectativa.<br><br>
-A joia diante dele não parava o tempo.<br>
-Ela o honrava.<br><br>
-Ela brilhava com a memória do que foram,<br>
-e com a promessa do que ainda seriam.<br><br>
-O Guardião entendeu:  
-não era sobre salvar o tempo.  
-Era sobre viver cada segundo com ela.`,
-e:`<p style="font-style:italic;">
+A joia não parava o tempo —  
+ela o honrava.<br><br>
+Brilhava com a memória do que foram<br>
+e a promessa do que ainda seriam.<br><br>
+O Guardião entendeu:<br>
+não era sobre salvar o tempo.<br>
+Era sobre vivê‑lo plenamente com ela.`,
+e:`
+<p style="font-style:italic;">
 “Agora, o que vai salvar o nosso tempo<br>
 é estarmos juntos em todos eles.”
+</p>
 
-},
+<video controls id="finalVideo">
+  <source src="final.mp4" type="video/mp4">
+</video>
+
+<div id="finalSecreto">
+🌹 <strong>FINAL SECRETO</strong> 🌹<br><br>
+“Quando o vídeo termina,<br>
+um novo tempo nasce.<br>
+A joia escolheu vocês.<br>
+E agora… o tempo também.”
+</div>
+`
+}
 
 ];
 
 
-////////////////////////////////////////////////////////////////////////////////////
-// RENDERIZAÇÃO
-////////////////////////////////////////////////////////////////////////////////////
+/* ------------------------------ RENDERIZAÇÃO DOS CAPÍTULOS ------------------------------ */
+
 const area = document.getElementById("capitulos");
 
-for(let i=0;i<capitulos.length;i++){
+for(let i = 0; i < capitulos.length; i++){
   const div = document.createElement("div");
   div.className = "pergaminho";
 
@@ -548,23 +561,21 @@ for(let i=0;i<capitulos.length;i++){
   area.appendChild(div);
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-// FINAL SECRETO DESBLOQUEADO APÓS O VÍDEO
-////////////////////////////////////////////////////////////////////////////////////
-document.addEventListener("click", function(){
+
+/* ------------------------------ FINAL SECRETO ------------------------------ */
+
+setTimeout(() => {
   const video = document.getElementById("finalVideo");
   if(video){
-    video.addEventListener("ended", () => {
+    video.onended = () => {
       document.getElementById("finalSecreto").style.display = "block";
-    });
+    };
   }
-});
-
+}, 500);
 </script>
 
 </body>
 </html>
-
 
 
 
