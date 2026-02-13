@@ -147,12 +147,15 @@ button:hover{
 <h1>📜 O Guardião do Tempo</h1>
 <p class="subtitle">Uma lenda onde o tempo só avança quando o amor permite</p>
 
-<div class="countdown" id="contador"></div>
-
 <button id="ativarSom">🎼 Tocar Música</button>
 
-<audio id="ambiente" loop src="ASSETS/musica.mp3"></audio>
-<audio id="selo" src="ASSETS/somPergaminho.mp3"></audio>
+<audio id="ambiente" loop>
+  <source src="ASSETS/musica.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="selo">
+  <source src="ASSETS/somPergaminho.mp3" type="audio/mpeg">
+</audio>
 
 <div class="pergaminho">
   <div class="contos">
@@ -519,6 +522,7 @@ for (let i = 0; i < dias; i++){
 
 </body>
 </html>
+
 
 
 
