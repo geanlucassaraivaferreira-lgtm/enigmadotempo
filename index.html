@@ -1,5 +1,4 @@
-
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -10,7 +9,7 @@
 <style>
 
 /* ============================================================
-   🌸 TEMA ROSA CLARO + FUNDO MEDIEVAL CLARO
+   🌸 TEMA ROSA CLARO + FUNDO CLARO MEDIEVAL
 ============================================================ */
 body{
   margin:0;
@@ -52,7 +51,7 @@ h1{
 }
 
 /* ============================================================
-   🌸 PERGAMINHO BEGE CLARO (PERFEITA LEGIBILIDADE)
+   🌸 PERGAMINHO BEGE CLARO
 ============================================================ */
 .pergaminho{
   background:
@@ -133,7 +132,6 @@ button:hover{
   color:#5a2c3b;
 }
 
-/* ==== RESPONSIVO ==== */
 @media(max-width:600px){
   body{ padding:20px; }
   h1{ font-size:2.4em; }
@@ -153,8 +151,8 @@ button:hover{
 
 <button id="ativarSom">🎼 Tocar Música</button>
 
-<audio id="ambiente" loop><source src="ASSETS/musica.mp3"></audio>
-<audio id="selo"><source src="ASSETS/somPergaminho.mp3"></audio>
+<audio id="ambiente" loop src="ASSETS/musica.mp3"></audio>
+<audio id="selo" src="ASSETS/somPergaminho.mp3"></audio>
 
 <div class="pergaminho">
   <div class="contos">
@@ -169,12 +167,8 @@ button:hover{
 
 <div id="capitulos"></div>
 
-``
-
-
-
 <!-- ============================================================
-     BRILHOS MÁGICOS
+     BRILHOS
 ============================================================ -->
 <script>
 for (let i = 0; i < 25; i++) {
@@ -187,10 +181,7 @@ for (let i = 0; i < 25; i++) {
 }
 </script>
 
-
-<!-- ============================================================
-     PÉTALAS ROSA CAINDO
-============================================================ -->
+<!-- PETALAS -->
 <script>
 for (let i = 0; i < 25; i++) {
   let petala = document.createElement("div");
@@ -205,10 +196,7 @@ for (let i = 0; i < 25; i++) {
 }
 </script>
 
-
-<!-- ============================================================
-     MÚSICA DO REINO (CASTELO)
-============================================================ -->
+<!-- MÚSICA -->
 <script>
 document.getElementById("ativarSom").onclick = () => {
   document.getElementById("ambiente").play();
@@ -216,13 +204,10 @@ document.getElementById("ativarSom").onclick = () => {
 };
 </script>
 
-
-<!-- ============================================================
-     CONTAGEM REGRESSIVA — 7 DIAS (CORRIGIDO)
-============================================================ -->
+<!-- CONTADOR (7 DIAS) -->
 <script>
 const alvo = new Date();
-alvo.setDate(alvo.getDate() + 7);  // ⬅️ dias restantes CORRETOS
+alvo.setDate(alvo.getDate() + 7);
 
 function atualizarContagem(){
   const agora = new Date();
@@ -246,9 +231,19 @@ setInterval(atualizarContagem, 1000);
 atualizarContagem();
 </script>
 
+<!-- DESBLOQUEIO AUTOMÁTICO POR DATA -->
+<script>
+const inicio = new Date("2026-02-01T00:00:00");
+const hoje = new Date();
+let dias = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24)) + 1;
 
+if (dias < 1) dias = 1;
+if (dias > 20) dias = 20;
+</script>
 
-   <!-- CAPÍTULOS COMPLETOS (1 → 20) -->
+<!-- ============================================================
+     CAPÍTULOS COM DESBLOQUEIO
+============================================================ -->
 <script>
 const capitulos = [
 
@@ -499,23 +494,7 @@ E agora… o tempo também.”
 ];
 
 
-<script>
-// ============================================================
-// DESBLOQUEIO AUTOMÁTICO POR DATA
-// ============================================================
-const inicio = new Date("2026-02-01T00:00:00");
-const hoje = new Date();
-let dias = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24)) + 1;
-
-if (dias < 1) dias = 1;
-if (dias > 20) dias = 20;
-
-
-// ============================================================
-// RENDERIZAÇÃO DOS CAPÍTULOS DESBLOQUEADOS
-// ============================================================
 const area = document.getElementById("capitulos");
-
 for (let i = 0; i < dias; i++){
   const div = document.createElement("div");
   div.className = "pergaminho";
@@ -537,23 +516,10 @@ for (let i = 0; i < dias; i++){
   area.appendChild(div);
 }
 </script>
-``
-
-
-/* ------------------------------ FINAL SECRETO ------------------------------ */
-
-setTimeout(() => {
-  const video = document.getElementById("finalVideo");
-  if(video){
-    video.onended = () => {
-      document.getElementById("finalSecreto").style.display = "block";
-    };
-  }
-}, 500);
-</script>
 
 </body>
 </html>
+
 
 
 
