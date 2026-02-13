@@ -150,13 +150,22 @@ button:hover{
 <button id="ativarSom">🎼 Tocar Música</button>
 
 <audio id="ambiente" loop>
-  <source src="ASSETS/Musica.mp3" type="audio/mpeg">
+  <source src="ASSETS/musica.mp3" type="audio/mpeg">
 </audio>
 
 <audio id="selo">
-  <source src="ASSETS/Musica.mp3" type="audio/mpeg">
+  <source src="ASSETS/somPergaminho.mp3" type="audio/mpeg">
 </audio>
+   
+<script>
+document.getElementById("ativarSom").onclick = () => {
+  const audio = document.getElementById("ambiente");
+  audio.play().catch(e => console.log(e));
+  document.getElementById("ativarSom").style.display = "none";
+};
+</script>
 
+   
 <div class="pergaminho">
   <div class="contos">
     <strong>Bom dia, princesa Gabriela 🤍</strong><br><br>
@@ -522,6 +531,7 @@ for (let i = 0; i < dias; i++){
 
 </body>
 </html>
+
 
 
 
