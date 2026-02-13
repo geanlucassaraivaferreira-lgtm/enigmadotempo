@@ -172,6 +172,7 @@ button:hover{
 ``
 
 
+
 <!-- ============================================================
      BRILHOS MÁGICOS
 ============================================================ -->
@@ -206,31 +207,29 @@ for (let i = 0; i < 25; i++) {
 
 
 <!-- ============================================================
-     MÚSICA AMBIENTE – CASTELO
+     MÚSICA DO REINO (CASTELO)
 ============================================================ -->
 <script>
 document.getElementById("ativarSom").onclick = () => {
-  const audio = document.getElementById("ambiente");
-  audio.play();
+  document.getElementById("ambiente").play();
   document.getElementById("ativarSom").style.display = "none";
 };
 </script>
 
 
 <!-- ============================================================
-     CONTAGEM REGRESSIVA — 7 DIAS (CORRIGIDA)
+     CONTAGEM REGRESSIVA — 7 DIAS (CORRIGIDO)
 ============================================================ -->
 <script>
 const alvo = new Date();
-alvo.setDate(alvo.getDate() + 7); // dias restantes corretos
+alvo.setDate(alvo.getDate() + 7);  // ⬅️ dias restantes CORRETOS
 
 function atualizarContagem(){
   const agora = new Date();
   const diff = alvo - agora;
 
   if(diff <= 0){
-    document.getElementById("contador").innerHTML = 
-      "✨ O Grande Dia Chegou ✨";
+    document.getElementById("contador").innerHTML = "✨ O Grande Dia Chegou ✨";
     return;
   }
 
@@ -239,8 +238,8 @@ function atualizarContagem(){
   const minutos = Math.floor((diff % (1000*60*60)) / (1000*60));
   const segundos = Math.floor((diff % (1000*60)) / 1000);
 
-  document.getElementById("contador").innerHTML = 
-    `⏳ Faltam <strong>${dias}</strong> dias, ${horas}h ${minutos}m ${segundos}s`;
+  document.getElementById("contador").innerHTML =
+  `⏳ Faltam <strong>${dias}</strong> dias, ${horas}h ${minutos}m ${segundos}s`;
 }
 
 setInterval(atualizarContagem, 1000);
@@ -555,6 +554,7 @@ setTimeout(() => {
 
 </body>
 </html>
+
 
 
 
