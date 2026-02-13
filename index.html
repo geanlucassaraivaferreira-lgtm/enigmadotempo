@@ -4,70 +4,38 @@
 <meta charset="UTF-8">
 <title>O Guardião do Tempo</title>
 
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Cormorant+Garamond:wght@300;500&display=swap" rel="stylesheet">
+https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Cormorant+Garamond:wght@300;500&display=swap
 
 <style>
 
 /* ============================================================
-   TEMA ROSA ELEGANTE — FUNDO ESCURO MEDIEVAL
+   TEMA ROSA ELEGANTE — FUNDO ESCURO MEDIEVAL (corrigido)
 ============================================================ */
 body{
   margin:0;
   padding:40px;
   font-family:'Cormorant Garamond', serif;
-  color:#feeaf3;
+  color:#fef6fc !important;
   text-align:center;
   overflow-x:hidden;
 
   background:
-    radial-gradient(circle at top, rgba(0,0,0,0.55), rgba(0,0,0,0.95)),
+    radial-gradient(circle at top, rgba(0,0,0,0.45), rgba(0,0,0,0.85)),
     url("ASSETS/fundo.jpg") center/cover fixed no-repeat;
 }
 
-
-/* ============================================================
-   BRILHOS MÁGICOS
-============================================================ */
-@keyframes brilho {
-  0% {opacity:0.2; transform:translateY(0px);}
-  50% {opacity:0.7; transform:translateY(-25px);}
-  100% {opacity:0.2; transform:translateY(0px);}
-}
-
-.sparkle{
-  position:fixed;
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:#ffc4de;
-  box-shadow:0 0 10px #ffdaec;
-  animation:brilho 4s infinite ease-in-out;
-  pointer-events:none;
-}
-
-
-/* ============================================================
-   PETALAS
-============================================================ */
-@keyframes cair {
-  to { transform:translateY(110vh) rotate(360deg); }
-}
-
-
-/* ============================================================
-   TITULO
-============================================================ */
-h1{
-  font-size:3.5em;
-  font-family:'IM Fell English';
-  text-shadow:0 0 18px rgba(255,150,200,0.6);
+/* Títulos muito claros */
+h1, h2{
+  color:#ffe9f7 !important;
+  text-shadow:0 0 18px rgba(255,180,220,0.9);
 }
 
 .subtitle{
+  color:#ffe9f7 !important;
+  text-shadow:0 0 8px rgba(0,0,0,0.6);
   font-size:1.3em;
-  opacity:0.9;
+  opacity:0.95;
 }
-
 
 /* ============================================================
    CONTADOR
@@ -77,27 +45,28 @@ h1{
   padding:12px 22px;
   margin-bottom:25px;
   border-radius:14px;
-  background:rgba(255,200,230,0.1);
-  border:1px solid rgba(255,200,230,0.3);
+  background:rgba(255,200,230,0.12);
+  border:1px solid rgba(255,200,230,0.35);
   display:inline-block;
+  color:#ffe9f7 !important;
 }
 
-
 /* ============================================================
-   PERGAMINHO (BEGE)
+   PERGAMINHO (CLAREADO)
 ============================================================ */
 .pergaminho{
-  background:url("ASSETS/papel.jpg") center/cover;
-  color:#3b2a1a;
+  background:
+    linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
+    url("ASSETS/papel.jpg") center/cover no-repeat !important;
+
+  color:#3b2a1a !important;
   border-radius:22px;
   padding:40px;
   margin:45px auto;
-  max-width:840px;
+  max-width:850px;
 
   border:2px solid rgba(255,200,220,0.25);
-  box-shadow:
-    0 0 25px rgba(255,160,200,0.2),
-    inset 0 0 20px rgba(255,240,250,0.3);
+  box-shadow:0 0 25px rgba(255,150,200,0.25), inset 0 0 20px rgba(255,240,250,0.4);
 
   animation:fadein 1s ease;
 }
@@ -107,8 +76,10 @@ h1{
   to{opacity:1; transform:scale(1);}
 }
 
-.contos{
-  font-size:1.25em;
+/* Texto interno do pergaminho */
+.pergaminho .contos{
+  color:#3b2a1a !important;
+  font-size:1.3em;
   line-height:1.75;
 }
 
@@ -118,8 +89,19 @@ h1{
   font-family:'IM Fell English';
   letter-spacing:4px;
   font-size:1.4em;
+  color:#3b2a1a !important;
 }
 
+/* ============================================================
+   ENIGMA (texto corrigido)
+============================================================ */
+.enigma{
+  display:none;
+  margin-top:25px;
+  font-style:italic;
+  font-size:1.2em;
+  color:#5a2f14 !important;
+}
 
 /* ============================================================
    BOTÕES
@@ -130,11 +112,11 @@ button{
   border-radius:40px;
   border:none;
   background:#a84e74;
-  color:#ffe9f3;
+  color:#ffffff !important;
   font-family:'IM Fell English';
   cursor:pointer;
   font-size:1.15em;
-  box-shadow:0 0 10px rgba(255,200,220,0.35);
+  box-shadow:0 0 10px rgba(0,0,0,0.25);
   transition:0.25s;
 }
 
@@ -142,19 +124,6 @@ button:hover{
   transform:scale(1.06);
   background:#c9618c;
 }
-
-
-/* ============================================================
-   ENIGMA
-============================================================ */
-.enigma{
-  display:none;
-  margin-top:25px;
-  font-style:italic;
-  color:#6d3d52;
-  font-size:1.2em;
-}
-
 
 /* ============================================================
    FINAL SECRETO
@@ -170,7 +139,6 @@ button:hover{
   box-shadow:0 0 15px rgba(255,160,200,0.3);
 }
 
-
 /* ============================================================
    RESPONSIVO APP
 ============================================================ */
@@ -184,7 +152,6 @@ button:hover{
 </style>
 </head>
 
-
 <body>
 
 <h1>📜 O Guardião do Tempo</h1>
@@ -195,7 +162,7 @@ button:hover{
 <button id="ativarSom">🎼 Tocar Música</button>
 
 <audio id="ambiente" loop>
-  <source src="ASSETS/musica.mp3">
+  ASSETS/musica.mp3
 </audio>
 
 <audio id="selo">
@@ -216,16 +183,17 @@ button:hover{
 <div id="capitulos"></div>
 ``
 
+
 <!-- ============================================================
      BRILHOS MÁGICOS
 ============================================================ -->
 <script>
-for(let i=0;i<25;i++){
-  const s=document.createElement("div");
-  s.className="sparkle";
-  s.style.left=Math.random()*100+"vw";
-  s.style.top=Math.random()*100+"vh";
-  s.style.animationDelay=(Math.random()*3)+"s";
+for (let i = 0; i < 25; i++) {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.top = Math.random() * 100 + "vh";
+  s.style.animationDelay = (Math.random() * 3) + "s";
   document.body.appendChild(s);
 }
 </script>
@@ -235,15 +203,15 @@ for(let i=0;i<25;i++){
      PÉTALAS ROSA CAINDO
 ============================================================ -->
 <script>
-for (let i=0; i<25; i++){
+for (let i = 0; i < 25; i++) {
   let petala = document.createElement("div");
   petala.innerHTML = "🌸";
-  petala.style.position="fixed";
+  petala.style.position = "fixed";
   petala.style.top = "-10px";
-  petala.style.left = Math.random()*100+"vw";
-  petala.style.fontSize = (18 + Math.random()*22)+"px";
+  petala.style.left = Math.random() * 100 + "vw";
+  petala.style.fontSize = (18 + Math.random() * 22) + "px";
   petala.style.opacity = 0.75;
-  petala.style.animation = `cair ${5+Math.random()*6}s linear infinite`;
+  petala.style.animation = `cair ${5 + Math.random() * 6}s linear infinite`;
   document.body.appendChild(petala);
 }
 </script>
@@ -262,11 +230,11 @@ document.getElementById("ativarSom").onclick = () => {
 
 
 <!-- ============================================================
-     CONTAGEM REGRESSIVA 10 DIAS
+     CONTAGEM REGRESSIVA — 7 DIAS (CORRIGIDA)
 ============================================================ -->
 <script>
 const alvo = new Date();
-alvo.setDate(alvo.getDate() + 10); // 10 dias
+alvo.setDate(alvo.getDate() + 7); // dias restantes corretos
 
 function atualizarContagem(){
   const agora = new Date();
@@ -290,6 +258,7 @@ function atualizarContagem(){
 setInterval(atualizarContagem, 1000);
 atualizarContagem();
 </script>
+
 
 
    <!-- CAPÍTULOS COMPLETOS (1 → 20) -->
@@ -583,6 +552,7 @@ setTimeout(() => {
 
 </body>
 </html>
+
 
 
 
