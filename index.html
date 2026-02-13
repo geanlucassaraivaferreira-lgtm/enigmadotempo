@@ -1,151 +1,143 @@
-<!DOCTYPE html>
+
+!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <title>O Guardião do Tempo</title>
 
-https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Cormorant+Garamond:wght@300;500&display=swap
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Cormorant+Garamond:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 
 /* ============================================================
-   TEMA ROSA ELEGANTE — FUNDO ESCURO MEDIEVAL (corrigido)
+   🌸 TEMA ROSA CLARO + FUNDO MEDIEVAL CLARO
 ============================================================ */
 body{
   margin:0;
   padding:40px;
   font-family:'Cormorant Garamond', serif;
-  color:#fef6fc !important;
+  color:#3b2a1a;
   text-align:center;
   overflow-x:hidden;
 
   background:
-    radial-gradient(circle at top, rgba(0,0,0,0.45), rgba(0,0,0,0.85)),
-    url("ASSETS/fundo.jpg") center/cover fixed no-repeat;
+    linear-gradient(rgba(255,240,245,0.85), rgba(255,232,242,0.92)),
+    url("ASSETS/fundoClaro.jpg") center/cover fixed no-repeat;
 }
 
-/* Títulos muito claros */
-h1, h2{
-  color:#ffe9f7 !important;
-  text-shadow:0 0 18px rgba(255,180,220,0.9);
+/* ==== TÍTULOS ROSA MEDIEVAL ==== */
+h1{
+  font-size:3.5em;
+  font-family:'IM Fell English';
+  color:#a3436e;
+  text-shadow:0 0 10px rgba(255,180,220,0.5);
 }
 
 .subtitle{
-  color:#ffe9f7 !important;
-  text-shadow:0 0 8px rgba(0,0,0,0.6);
   font-size:1.3em;
-  opacity:0.95;
+  color:#b05a7f;
+  margin-bottom:15px;
 }
 
-/* ============================================================
-   CONTADOR
-============================================================ */
+/* ==== CONTADOR ===== */
 .countdown{
   font-size:1.6em;
-  padding:12px 22px;
-  margin-bottom:25px;
-  border-radius:14px;
-  background:rgba(255,200,230,0.12);
-  border:1px solid rgba(255,200,230,0.35);
+  padding:12px 20px;
+  border-radius:16px;
+  background:rgba(255,200,225,0.4);
+  border:1px solid rgba(255,180,200,0.8);
+  color:#7e3a52;
   display:inline-block;
-  color:#ffe9f7 !important;
+  text-shadow:0 0 6px rgba(255,255,255,0.9);
 }
 
 /* ============================================================
-   PERGAMINHO (CLAREADO)
+   🌸 PERGAMINHO BEGE CLARO (PERFEITA LEGIBILIDADE)
 ============================================================ */
 .pergaminho{
   background:
-    linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
-    url("ASSETS/papel.jpg") center/cover no-repeat !important;
-
-  color:#3b2a1a !important;
-  border-radius:22px;
+    linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
+    url("ASSETS/pergaminhoClaro.jpg") center/cover no-repeat !important;
+  
+  color:#3b2a1a;
+  border-radius:24px;
   padding:40px;
-  margin:45px auto;
+  margin:40px auto;
   max-width:850px;
-
-  border:2px solid rgba(255,200,220,0.25);
-  box-shadow:0 0 25px rgba(255,150,200,0.25), inset 0 0 20px rgba(255,240,250,0.4);
-
-  animation:fadein 1s ease;
+  
+  border:2px solid rgba(255,180,210,0.35);
+  box-shadow:0 0 20px rgba(255,200,220,0.4);
+  
+  animation:fadeIn 1s ease;
 }
 
-@keyframes fadein{
-  from{opacity:0; transform:scale(.95);}
+@keyframes fadeIn{
+  from{opacity:0; transform:scale(.93);}
   to{opacity:1; transform:scale(1);}
 }
 
-/* Texto interno do pergaminho */
-.pergaminho .contos{
-  color:#3b2a1a !important;
+.contos{
   font-size:1.3em;
-  line-height:1.75;
+  line-height:1.8;
+  color:#3b2a1a;
 }
 
+/* ==== RUNAS ==== */
 .runas{
-  margin-top:15px;
+  color:#744a2d;
   opacity:0.55;
-  font-family:'IM Fell English';
+  margin-top:10px;
   letter-spacing:4px;
   font-size:1.4em;
-  color:#3b2a1a !important;
+  font-family:'IM Fell English';
 }
 
-/* ============================================================
-   ENIGMA (texto corrigido)
-============================================================ */
+/* ==== ENIGMAS ==== */
 .enigma{
   display:none;
-  margin-top:25px;
+  margin-top:20px;
+  color:#7a3f32;
   font-style:italic;
   font-size:1.2em;
-  color:#5a2f14 !important;
 }
 
-/* ============================================================
-   BOTÕES
-============================================================ */
+/* ==== BOTÕES ==== */
 button{
   margin-top:25px;
-  padding:12px 30px;
+  padding:12px 28px;
   border-radius:40px;
-  border:none;
-  background:#a84e74;
-  color:#ffffff !important;
   font-family:'IM Fell English';
-  cursor:pointer;
   font-size:1.15em;
-  box-shadow:0 0 10px rgba(0,0,0,0.25);
+  border:none;
+  background:#c55e8c;
+  color:white;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+  cursor:pointer;
   transition:0.25s;
 }
 
 button:hover{
   transform:scale(1.06);
-  background:#c9618c;
+  background:#e27db0;
 }
 
-/* ============================================================
-   FINAL SECRETO
-============================================================ */
+/* ==== FINAL SECRETO ==== */
 #finalSecreto{
   display:none;
-  background:rgba(255,220,240,0.35);
+  background:rgba(255,240,250,0.85);
+  box-shadow:0 0 15px rgba(255,160,200,0.4);
   padding:20px;
-  margin-top:25px;
-  border-radius:14px;
+  border-radius:16px;
+  margin-top:20px;
   font-size:1.25em;
   color:#5a2c3b;
-  box-shadow:0 0 15px rgba(255,160,200,0.3);
 }
 
-/* ============================================================
-   RESPONSIVO APP
-============================================================ */
+/* ==== RESPONSIVO ==== */
 @media(max-width:600px){
   body{ padding:20px; }
   h1{ font-size:2.4em; }
-  .pergaminho{ padding:25px; }
+  .pergaminho{ padding:24px; }
   .contos{ font-size:1.15em; }
 }
 
@@ -161,13 +153,8 @@ button:hover{
 
 <button id="ativarSom">🎼 Tocar Música</button>
 
-<audio id="ambiente" loop>
-  ASSETS/musica.mp3
-</audio>
-
-<audio id="selo">
-  <source src="ASSETS/somPergaminho.mp3">
-</audio>
+<audio id="ambiente" loop><source src="ASSETS/musica.mp3"></audio>
+<audio id="selo"><source src="ASSETS/somPergaminho.mp3"></audio>
 
 <div class="pergaminho">
   <div class="contos">
@@ -181,6 +168,7 @@ button:hover{
 </div>
 
 <div id="capitulos"></div>
+
 ``
 
 
@@ -512,11 +500,24 @@ E agora… o tempo também.”
 ];
 
 
-/* ------------------------------ RENDERIZAÇÃO DOS CAPÍTULOS ------------------------------ */
+<script>
+// ============================================================
+// DESBLOQUEIO AUTOMÁTICO POR DATA
+// ============================================================
+const inicio = new Date("2026-02-01T00:00:00");
+const hoje = new Date();
+let dias = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24)) + 1;
 
+if (dias < 1) dias = 1;
+if (dias > 20) dias = 20;
+
+
+// ============================================================
+// RENDERIZAÇÃO DOS CAPÍTULOS DESBLOQUEADOS
+// ============================================================
 const area = document.getElementById("capitulos");
 
-for(let i = 0; i < capitulos.length; i++){
+for (let i = 0; i < dias; i++){
   const div = document.createElement("div");
   div.className = "pergaminho";
 
@@ -536,6 +537,8 @@ for(let i = 0; i < capitulos.length; i++){
 
   area.appendChild(div);
 }
+</script>
+``
 
 
 /* ------------------------------ FINAL SECRETO ------------------------------ */
@@ -552,6 +555,7 @@ setTimeout(() => {
 
 </body>
 </html>
+
 
 
 
